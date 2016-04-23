@@ -12,8 +12,8 @@
 
 
 /* requireJS module definition */
-define(["jquery", "Line"],
-    (function($, Line) {
+define(["jquery", "Line", "Circle"],
+    (function($, Line, Circle) {
         "use strict";
 
         /*
@@ -51,6 +51,11 @@ define(["jquery", "Line"],
                 return "#"+toHex2(r)+toHex2(g)+toHex2(b);
             };
 
+            // generate random Radius  within the canvas
+            var randomRadius = function() {
+                return Math.floor(Math.random()*(context.canvas.height/2))+5;
+            };
+
             /*
              * event handler for "new line button".
              */
@@ -70,6 +75,50 @@ define(["jquery", "Line"],
                 // deselect all objects, then select the newly created object
                 sceneController.deselect();
                 sceneController.select(line); // this will also redraw
+
+            }));
+
+            /*
+             * event handler for "new circle button".
+             */
+            $("#btnNewCircle").click( (function() {
+
+                // create the actual line and add it to the scene
+                var style = {
+                    width: Math.floor(Math.random()*3)+1,
+                    color: randomColor()
+                };
+
+                var circle = new Circle( [randomX(),randomY()],
+                    randomRadius(), style );
+
+                scene.addObjects([circle]);
+
+                // deselect all objects, then select the newly created object
+                sceneController.deselect();
+                sceneController.select(circle); // this will also redraw
+
+            }));
+
+            /*
+             * event handler for "new point button".
+             */
+            $("#btnNewPoint").click( (function() {
+
+                // create the actual line and add it to the scene
+                var style = {
+                    width: Math.floor(Math.random()*3)+1,
+                    color: randomColor()
+                };
+
+                var point = new Circle( [randomX(),randomY()],
+                    0.5, style );
+
+                scene.addObjects([point]);
+
+                // deselect all objects, then select the newly created object
+                sceneController.deselect();
+                sceneController.select(point); // this will also redraw
 
             }));
 
