@@ -5,15 +5,15 @@
  *
  * Module: html_controller
  *
- * Defines callback functions for communicating with various 
+ * Defines callback functions for communicating with various
  * HTML elements on the page, e.g. buttons and parameter fields.
  *
  */
 
 
 /* requireJS module definition */
-define(["jquery", "Line"],
-    (function($, Line) {
+define(["jquery", "Line", "scene/point", "util"],
+    (function($, Line, Point) {
         "use strict";
 
         /*
@@ -22,6 +22,8 @@ define(["jquery", "Line"],
          */
         var HtmlController = function(context,scene,sceneController) {
 
+            var kdTree;
+            var pointList = [];
 
             // generate random X coordinate within the canvas
             var randomX = function() {
@@ -31,6 +33,11 @@ define(["jquery", "Line"],
             // generate random Y coordinate within the canvas
             var randomY = function() {
                 return Math.floor(Math.random()*(context.canvas.height-10))+5;
+            };
+
+            // generate random radius within the canvas
+            var randomRadius = function() {
+                return Math.floor(Math.random() * ((context.canvas.height / 2) - 10)) + 5;
             };
 
             // generate random color in hex notation
@@ -51,7 +58,7 @@ define(["jquery", "Line"],
                 return "#"+toHex2(r)+toHex2(g)+toHex2(b);
             };
 
-            /*
+            /**
              * event handler for "new line button".
              */
             $("#btnNewLine").click( (function() {
@@ -74,7 +81,29 @@ define(["jquery", "Line"],
             }));
 
 
+
+            /**
+             * Event handler for the New Point button. 
+             */
+            $("#btnNewPoint").click(function() {
+                // create the actual point and add it to the scene
+                var style = {
+                    width: Math.floor(Math.random())+1,
+                    color: randomColor()
+                };
+
+                var point = new Point([randomX(), randomY()], style);
+                scene.addObjects([point]);
+
+                // deselect all objects, then select the newly created object
+                sceneController.deselect();
+                sceneController.select(point); // this will also redraw
+            });
+
+
         };
+
+
 
         // return the constructor function
         return HtmlController;
