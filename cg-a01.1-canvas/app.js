@@ -21,6 +21,8 @@ requirejs.config({
             '../lib/jquery-1.7.2.min'],
 
         "util" : "./utils/util",
+        "point":"./scene/point",
+        "circle":".scene/circle",
 
         "Scene" : "./scene/scene",
         "Line" : "./scene/line",

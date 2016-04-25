@@ -12,7 +12,7 @@
 
 
 /* requireJS module definition */
-define(["jquery", "Line", "scene/point", "util"],
+define(["jquery", "Line", "point", "util"],
     (function($, Line, Point) {
         "use strict";
 
