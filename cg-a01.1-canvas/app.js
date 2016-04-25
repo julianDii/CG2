@@ -22,7 +22,7 @@ requirejs.config({
 
         "util" : "./utils/util",
         "point":"./scene/point",
-        "circle":".scene/circle",
+        "circle":"./scene/circle",
 
         "Scene" : "./scene/scene",
         "Line" : "./scene/line",
