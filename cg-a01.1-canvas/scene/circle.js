@@ -71,7 +71,7 @@ define(["util", "vec2", "Scene", "PointDragger"],
             };
 
             // return list of draggers to manipulate this Circle
-            this.createDraggers = function() {
+            Circle.prototype.createDraggers = function() {
 
                 var draggerStyle = { radius:4, color: this.lineStyle.color, width:0, fill:true }
                 var draggers = [];

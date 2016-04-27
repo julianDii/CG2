@@ -78,6 +78,9 @@ define(["jquery", "Line", "point","circle", "util"],
                 sceneController.deselect();
                 sceneController.select(line); // this will also redraw
 
+
+
+
             }));
 
 
@@ -117,7 +120,87 @@ define(["jquery", "Line", "point","circle", "util"],
                 sceneController.select(circle); // this will also redraw
             });
 
-        
+
+
+            /**
+             * Handles the event for the color picker for the selected object
+             */
+            $("#inColor").change(function () {
+
+                var obj = sceneController.getSelectedObject();
+                obj.lineStyle.color = this.value;
+
+                sceneController.deselect();
+                sceneController.select(obj);
+
+            });
+
+
+            /**
+             * sets the
+             * hide radius when point or line is selected
+             */
+            sceneController.onSelection(function () {
+
+                var obj = this.getSelectedObject();
+
+
+                $('#inColor').val(obj.lineStyle.color);
+                $('#inRadius').val(obj.radius);
+                $('#inNumber').val(obj.lineStyle.width);
+
+                if (obj.radius==undefined) {
+
+                    $('#inRadius').hide();
+                    $('#ra').hide();
+
+
+                } else {
+                    $('#inRadius').show();
+                    $('#ra').show();
+                }
+
+            });
+
+
+            /**
+             * Handles the event when a selected object line width is getting manipulated in the inNumber field of
+             * the HTML context.
+             */
+            $('#inNumber').change(function () {
+
+                var obj = sceneController.getSelectedObject();
+                obj.lineStyle.width = this.value;
+
+                sceneController.deselect();
+                sceneController.select(obj);
+
+            });
+
+            /**
+             * Sets the color and the width to the value of the selected object.
+             */
+            sceneController.onObjChange(function () {
+
+                var obj = this.getSelectedObject();
+
+                $("#inNumber").val(obj.lineStyle.width);
+                $("#inColor").val(obj.lineStyle.color);
+                $("#inRadius").val(obj.radius)
+
+            });
+
+            /**
+             * Sets the radius of the circle to the chosen value.
+             */
+            $("#inRadius").change(function() {
+                var object = sceneController.getSelectedObject();
+                object.radius = parseInt(this.value);
+
+                sceneController.deselect();
+                sceneController.select(object);
+            });
+
         };
 
 
