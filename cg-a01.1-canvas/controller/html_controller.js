@@ -12,8 +12,8 @@
 
 
 /* requireJS module definition */
-define(["jquery", "Line", "point","circle", "util"],
-    (function($, Line, Point, Circle) {
+define(["jquery", "Line", "point","circle", "util","kdtree","kdutil"],
+    (function($, Line, Point, Circle, KdTree, Kdutil) {
         "use strict";
 
         /*
@@ -78,9 +78,6 @@ define(["jquery", "Line", "point","circle", "util"],
                 sceneController.deselect();
                 sceneController.select(line); // this will also redraw
 
-
-
-
             }));
 
 
@@ -137,8 +134,8 @@ define(["jquery", "Line", "point","circle", "util"],
 
 
             /**
-             * sets the
-             * hide radius when point or line is selected
+             * sets the of the color, radius and width of the html elements to the values of the selected element.
+             * and hides the radius when point or line is selected
              */
             sceneController.onSelection(function () {
 
@@ -200,6 +197,101 @@ define(["jquery", "Line", "point","circle", "util"],
                 sceneController.deselect();
                 sceneController.select(object);
             });
+
+            // public method: show parameters for selected object
+            this.showParamsForObj = function(obj) {
+
+                if(!obj) {
+                    $("#radius_div").hide();
+                    return;
+                }
+
+                $("#obj_lineWidth").attr("value", obj.lineStyle.width);
+                $("#obj_color").attr("value", obj.lineStyle.color);
+                if(obj.radius == undefined) {
+                    $("#radius_div").hide();
+                } else {
+                    $("#radius_div").show();
+                    $("#obj_radius").attr("value", obj.radius);
+                };
+
+            };
+
+            // for all elements of class objParams
+            $(".objParam").change( (function(ev) {
+
+                var obj = sceneController.getSelectedObject();
+                if(!obj) {
+                    window.console.log("ParamController: no object selected.");
+                    return;
+                };
+
+                obj.lineStyle.width = parseInt($("#obj_lineWidth").attr("value"));
+                obj.lineStyle.color = $("#obj_color").attr("value");
+                if(obj.radius != undefined) {
+                    obj.radius = parseInt($("#obj_radius").attr("value"));
+                };
+
+                scene.draw(context);
+            }));
+
+
+
+
+
+            /*Here starts the KDTREE part of the html controller*/
+
+            $("#visKdTree").click( (function() {
+
+                var showTree = $("#visKdTree").attr("checked");
+                if(showTree && kdTree) {
+                    KdUtil.visualizeKdTree(sceneController, scene, kdTree.root, 0, 0, 600, true);
+                }
+
+            }));
+
+            $("#btnBuildKdTree").click( (function() {
+
+                kdTree = new KdTree(pointList);
+
+            }));
+
+            /**
+             * creates a random query point and
+             * runs linear search and kd-nearest-neighbor search
+             */
+            $("#btnQueryKdTree").click( (function() {
+
+                var style = {
+                    width: 2,
+                    color: "#ff0000"
+                };
+                var queryPoint = new Point([randomX(), randomY()], 2,
+                    style);
+                scene.addObjects([queryPoint]);
+                sceneController.select(queryPoint);
+
+                console.log("query point: ", queryPoint.center);
+
+                ////////////////////////////////////////////////
+                // TODO: measure and compare timings of linear
+                //       and kd-nearest-neighbor search
+                ////////////////////////////////////////////////
+                var linearTiming;
+                var kdTiming;
+
+                var minIdx = KdUtil.linearSearch(pointList, queryPoint);
+
+                console.log("nearest neighbor linear: ", pointList[minIdx].center);
+
+                var kdNearestNeighbor = kdTree.findNearestNeighbor(kdTree.root, queryPoint, 10000000, kdTree.root, 0);
+
+                console.log("nearest neighbor kd: ", kdNearestNeighbor.point.center);
+
+                sceneController.select(pointList[minIdx]);
+                sceneController.select(kdNearestNeighbor.point);
+
+            }));
 
         };
 
