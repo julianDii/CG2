@@ -234,12 +234,39 @@ define(["jquery", "Line", "point","circle", "util","kdtree","kdutil"],
 
                 scene.draw(context);
             }));
-
-
-
-
+            
 
             /*Here starts the KDTREE part of the html controller*/
+            $("#btnNewPointList").click(function () {
+
+                var style = {
+                    width: 1,
+                    color: randomColor()
+                };
+
+
+                var numPoints = $('#inPoints').val();
+
+                if (numPoints == "") {
+                    numPoints =10;
+
+
+                }
+
+                for(var i=0; i<numPoints; ++i) {
+                    var point = new Point([randomX(), randomY()], style);
+                    scene.addObjects([point]);
+                    pointList.push(point);
+                }
+
+                // deselect all objects, then select the newly created object
+                sceneController.deselect();
+
+
+            });
+
+
+
 
             $("#visKdTree").click( (function() {
 
