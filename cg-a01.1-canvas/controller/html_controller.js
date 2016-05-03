@@ -12,8 +12,8 @@
 
 
 /* requireJS module definition */
-define(["jquery", "Line", "point","circle", "util","kdtree","kdutil"],
-    (function($, Line, Point, Circle, KdTree, KdUtil) {
+define(["jquery", "Line", "point","circle", "util","KdTree_con","kdutil"],
+    (function($, Line, Point, Circle, KdTree_con, KdUtil) {
         "use strict";
 
         /*
@@ -21,6 +21,8 @@ define(["jquery", "Line", "point","circle", "util","kdtree","kdutil"],
          * and provide them with a closure defining context and scene
          */
         var HtmlController = function(context,scene,sceneController) {
+
+
 
             var kdTree;
             var pointList = [];
@@ -265,9 +267,7 @@ define(["jquery", "Line", "point","circle", "util","kdtree","kdutil"],
 
             });
 
-
-
-
+            
             $("#visKdTree").click( (function() {
 
                 var showTree = $("#visKdTree").attr("checked");
@@ -279,7 +279,7 @@ define(["jquery", "Line", "point","circle", "util","kdtree","kdutil"],
 
             $("#btnBuildKdTree").click( (function() {
 
-                kdTree = new KdTree(pointList);
+                kdTree = new KdTree_con(pointList);
 
             }));
 
@@ -311,7 +311,7 @@ define(["jquery", "Line", "point","circle", "util","kdtree","kdutil"],
 
                 console.log("nearest neighbor linear: ", pointList[minIdx].center);
 
-                var kdNearestNeighbor = kdTree.findNearestNeighbor(kdTree.root, queryPoint, 10000000, kdTree.root, 0);
+                var kdNearestNeighbor = kdTree.findNearestNeighbor(kdTree.root, queryPoint, kdTree.root, 10000000, 0);
 
                 console.log("nearest neighbor kd: ", kdNearestNeighbor.point.center);
 

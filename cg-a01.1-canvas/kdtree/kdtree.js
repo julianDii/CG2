@@ -10,7 +10,7 @@
 
 /* requireJS module definition */
 define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
-    (function(KdUtil, vec2, Scene, KdNode, BoundingBox) {
+    (function(kdutil, vec2, Scene, KdNode, BoundingBox) {
 
         "use strict";
 
@@ -21,7 +21,7 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
          * @param pointList
          * @constructor
          */
-        var KdTree = function (pointList) {
+        var KdTree_con = function (pointList) {
 
             /**
              *
@@ -33,7 +33,12 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
              */
             this.build = function(pointList, dim, parent, isLeft) {
 
-                var node = undefined;
+                if (pointList.length === 0){
+                    return undefined
+                }
+                
+                
+                var node = new KdNode(dim);
 
                 // ===========================================
                 // TODO: implement build tree
@@ -124,7 +129,7 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
 
         };
 
-        return KdTree;
+        return KdTree_con;
 
 
     })); // define
