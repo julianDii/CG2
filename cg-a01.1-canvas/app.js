@@ -35,7 +35,9 @@ requirejs.config({
         "kdutil" : "./kdtree/kdutil",
         "KdTree_con" : "./kdtree/kdtree",
         "KdNode" : "./kdtree/kdnode",
-        "BoundingBox" : "./kdtree/boundingbox"
+        "BoundingBox" : "./kdtree/boundingbox",
+        "ParametricCurve": "./scene/parametric_curve",
+        "BezierCurve": "./scene/bezier_curve"
     }
 });
 

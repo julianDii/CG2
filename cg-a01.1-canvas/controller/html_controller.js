@@ -12,8 +12,8 @@
 
 
 /* requireJS module definition */
-define(["jquery", "Line", "point","circle", "util","KdTree_con","kdutil"],
-    (function($, Line, Point, Circle, Util,  KdTree_con, KdUtil) {
+define(["jquery", "Line", "point","circle", "util","KdTree_con","kdutil","ParametricCurve","BezierCurve"],
+    (function($, Line, Point, Circle, Util,  KdTree_con, KdUtil, ParametricCurve, Beziercurve) {
         "use strict";
 
         /*
@@ -119,6 +119,35 @@ define(["jquery", "Line", "point","circle", "util","KdTree_con","kdutil"],
                 sceneController.select(circle); // this will also redraw
             });
 
+
+            $("#newParametricCurve").click(function() {
+                try {
+                    var xT = $("#inputFt").val();
+                    var yT = $("#inputGt").val();
+
+                    // Test eval
+                    var t = 0;
+                    eval(xT);
+                    eval(yT);
+
+                    // create the actual line and add it to the scene
+                    var style = {
+                        width: Math.floor(Math.random()*3)+1,
+                        color: randomColor()
+                    };
+
+                    var parametric_curve = new ParametricCurve(xT, yT, $('#inputMint').val(), $("#inputMaxt").val(), $("#inputSegments").val(), style);
+                    scene.addObjects([parametric_curve]);
+
+                    // deselect all objects, then select the newly created object
+                    sceneController.deselect();
+                    sceneController.select(parametric_curve); // this will also redraw
+                } catch (e) {
+                    alert(e.message);
+                }
+
+
+            });
 
 
             /**
