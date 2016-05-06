@@ -40,9 +40,6 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
                 //<Neuen Knoten im Baum erzeugen>
                 var node = new KdNode(dim);
 
-                // ===========================================
-                // TODO: implement build tree
-                // ===========================================
 
                 // Note: We need to compute the bounding box for EACH new 'node'
                 //       to be able to query correctly
@@ -96,7 +93,7 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
                             var xMin = parent.bbox.xmin;
                             var xMax = parent.bbox.xmax;
                             var yMin = parent.bbox.ymin;
-                            var yMax = parent.bbox.ymax;
+                            var yMax = parent.point.center[1];
 
                             bbox = new BoundingBox(xMin, yMin, xMax, yMax, medianPoint, dim);
 
@@ -106,6 +103,9 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
                             var xMax = parent.bbox.xmax;
                             var yMin = parent.point.center[1];
                             var yMax = parent.bbox.ymax;
+
+                            bbox = new BoundingBox(xMin, xMax, yMin, yMax, medianPoint, dim);
+
                         }
 
                     } else {
@@ -130,6 +130,7 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
                         }
                     }
                 }
+
                 node.bbox = bbox;
                 
 

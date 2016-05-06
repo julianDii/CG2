@@ -315,6 +315,8 @@ define(["jquery", "Line", "point","circle", "util","KdTree_con","kdutil"],
 
                 console.log("nearest neighbor kd: ", kdNearestNeighbor.point.center);
 
+                kdNearestNeighbor.point.lineStyle = { width: "0", color: "#3ff4be" };
+
                 sceneController.select(pointList[minIdx]);
                 sceneController.select(kdNearestNeighbor.point);
 
