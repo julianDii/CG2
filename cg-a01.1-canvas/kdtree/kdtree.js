@@ -116,7 +116,7 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
                             var yMin = parent.bbox.ymin;
                             var yMax = parent.bbox.ymax;
 
-                            bbox = new BoundingBox(xMin, yMin, xMax, medianPoint,dim );
+                            bbox = new BoundingBox(xMin, yMin, xMax,yMax, medianPoint, dim );
 
                         } else {
 

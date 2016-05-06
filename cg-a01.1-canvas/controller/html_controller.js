@@ -242,7 +242,7 @@ define(["jquery", "Line", "point","circle", "util","KdTree_con","kdutil"],
             $("#btnNewPointList").click(function () {
 
                 var style = {
-                    width: 1,
+                    width: 0,
                     color: randomColor()
                 };
 
@@ -315,7 +315,7 @@ define(["jquery", "Line", "point","circle", "util","KdTree_con","kdutil"],
 
                 console.log("nearest neighbor kd: ", kdNearestNeighbor.point.center);
 
-                kdNearestNeighbor.point.lineStyle = { width: "0", color: "#3ff4be" };
+                kdNearestNeighbor.point.lineStyle = { width: "0", color:randomColor() };
 
                 sceneController.select(pointList[minIdx]);
                 sceneController.select(kdNearestNeighbor.point);
