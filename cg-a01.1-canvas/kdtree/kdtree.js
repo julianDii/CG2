@@ -2,15 +2,15 @@
  * JavaScript / Canvas teaching framwork
  * (C)opyright Kristian Hildebrand, khildebrand@beuth-hochschule.de
  *
- * Module: kdtree
+ * Module: KdTree
  *
  *
  */
 
 
 /* requireJS module definition */
-define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
-    (function(KdUtil, vec2, Scene, KdNode, BoundingBox) {
+define(["kdutil", "KdNode", "vec2", "Scene", "BoundingBox"],
+    (function(KdUtil, KdNode, vec2, Scene, BoundingBox) {
 
         "use strict";
 
@@ -21,7 +21,7 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
          * @param pointList
          * @constructor
          */
-        var KdTree_con = function (pointList) {
+        var KdTree_con = function(pointList) {
 
             /**
              *
@@ -33,126 +33,89 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
              */
             this.build = function(pointList, dim, parent, isLeft) {
 
-                if (pointList.length === 0){
-                    return undefined
-                }
+                // check whether or not jte pointlist has no points at all.
+                if (pointList.length === 0) return undefined;
+
+                // checks
+                var axis = dim === 0 ? 1 : 0;
+
 
                 //<Neuen Knoten im Baum erzeugen>
                 var node = new KdNode(dim);
 
 
-                // Note: We need to compute the bounding box for EACH new 'node'
-                //       to be able to query correctly
-                
-
-                //<Berechne Split Position in pointlist>
-
-                var medianPos = KdUtil.sortAndMedian(pointList,dim);
-
-                console.log("MedianPos: " + medianPos);
-
-                // <Speichern des Median points>
-
+                // find the median point and position in the pointlist.
+                var medianPos = KdUtil.sortAndMedian(pointList, node.dim);
                 var medianPoint = pointList[medianPos];
 
-                console.log("Median " + medianPos + ": ", medianPoint);
-
-                //<set node.point>
-
-                node.point = medianPoint;
-
-                // next axis
-                var nextAxis;
-
-                if (dim === 0) {
-                    nextAxis = 1;
-                } else {
-                    nextAxis = 0;
-                }
-                
-
-                //<Berechne Bounding Box des Unterbaumes / node.bbox >
 
 
 
-                var bbox;
-
-                //check if node is root
+                // cotainers for the bbox values
+                var xMin, xMax, yMin, yMax;
 
                 if (!parent) {
 
-                    bbox = new BoundingBox(0,0,500,400,medianPoint,dim);
+                    xMin = 0;
+                    yMin = 0;
+                    xMax = 500;
+                    yMax = 400;
 
+                    //<Berechne Bounding Box des Unterbaumes / node.bbox >
 
                 } else {
-
                     if (dim === 0) {
-
                         if (isLeft) {
-
-                            var xMin = parent.bbox.xmin;
-                            var xMax = parent.bbox.xmax;
-                            var yMin = parent.bbox.ymin;
-                            var yMax = parent.point.center[1];
-
-                            bbox = new BoundingBox(xMin, yMin, xMax, yMax, medianPoint, dim);
-
+                            xMin = parent.bbox.xmin;
+                            yMin = parent.bbox.ymin;
+                            xMax = parent.bbox.xmax;
+                            yMax = parent.point.center[1];
                         } else {
-
-                            var xMin = parent.bbox.xmin;
-                            var xMax = parent.bbox.xmax;
-                            var yMin = parent.point.center[1];
-                            var yMax = parent.bbox.ymax;
-
-                            bbox = new BoundingBox(xMin, xMax, yMin, yMax, medianPoint, dim);
-
+                            xMin = parent.bbox.xmin;
+                            yMin = parent.point.center[1];
+                            xMax = parent.bbox.xmax;
+                            yMax = parent.bbox.ymax;
                         }
-
                     } else {
-
                         if (isLeft) {
-                            var xMin = parent.bbox.xmin;
-                            var xMax = parent.point.center[0];
-                            var yMin = parent.bbox.ymin;
-                            var yMax = parent.bbox.ymax;
-
-                            bbox = new BoundingBox(xMin, yMin, xMax,yMax, medianPoint, dim );
-
+                            xMin = parent.bbox.xmin;
+                            yMin = parent.bbox.ymin;
+                            xMax = parent.point.center[0];
+                            yMax = parent.bbox.ymax;
                         } else {
-
-                            var xMin = parent.point.center[0];
-                            var xMax = parent.bbox.xmax;
-                            var yMin = parent.bbox.ymin;
-                            var yMax = parent.bbox.ymax;
-
-                            bbox = new BoundingBox(xMin, yMin, xMax, yMax, medianPoint, dim);
-
+                            xMin = parent.point.center[0];
+                            yMin = parent.bbox.ymin;
+                            xMax = parent.bbox.xmax;
+                            yMax = parent.bbox.ymax;
                         }
                     }
                 }
 
-                node.bbox = bbox;
-                
+                // set the node bbox with the calculated new values
+                node.bbox = new BoundingBox(xMin, yMin, xMax, yMax, medianPoint, dim);
 
-                //<Extrahiere Punkte für die linke Unterbaumhälfte>
 
-                var leftChilds = pointList.slice(0, medianPos);
 
+                //<set node.point>
+                // Here we have to set the Median point as the node.
+                node.point = medianPoint;
+
+
+                // container for all leftchildren
+                var leftChildren = pointList.slice(0, medianPos);
+                // container for the rightchildren
+                var rightChildren = pointList.slice(medianPos + 1);
 
                 //<Extrahiere Punkte für die rechte Unterbaumhälfte>
+                node.rightChild = this.build(rightChildren, axis, node, false);
 
-                var rightChilds = pointList.slice(medianPos + 1);
 
-                //<Unterbaum für linke Seite aufbauen>
+                //<Extrahiere Punkte für die linke Unterbaumhälfte>
+                node.leftChild = this.build(leftChildren, axis, node, true);
 
-                node.leftChild = this.build(leftChilds, nextAxis, node, true);
-
-                //<Unterbaum für rechte Seite aufbauen>
-
-                node.rightChild = this.build(rightChilds, nextAxis,node, false)
-                
 
                 return node;
+
             };
 
             /**
@@ -168,7 +131,7 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
              */
             this.findNearestNeighbor = function(node, query, currentBest, nearestDistance, dim) {
 
-                if( !node ) {
+                if (!node) {
                     return currentBest;
                 }
 
@@ -176,14 +139,14 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
                 var closestDistance = nearestDistance;
 
                 var dist = KdUtil.distance(node.point.center, query.center);
-                if( dist < nearestDistance ) {
+                if (dist < nearestDistance) {
                     closestDistance = dist;
                     closest = node;
                 }
 
                 var a, b;
                 if (dim == 0) {
-                    if ( query.center[0] < node.point.center[0]) {
+                    if (query.center[0] < node.point.center[0]) {
                         a = node.leftChild;
                         b = node.rightChild;
                     } else {
@@ -201,13 +164,12 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
                 }
 
                 var nextDim = (dim === 0) ? 1 : 0;
-
-                if( a && a.bbox.distanceTo(query.center) < closestDistance) {
+                if (a && a.bbox.distanceTo(query.center) < closestDistance) {
                     closest = this.findNearestNeighbor(a, query, closest, closestDistance, nextDim);
                     closestDistance = KdUtil.distance(closest.point.center, query.center);
                 }
 
-                if( b && b.bbox.distanceTo(query.center) < closestDistance) {
+                if (b && b.bbox.distanceTo(query.center) < closestDistance) {
                     closest = this.findNearestNeighbor(b, query, closest, closestDistance, nextDim);
                 }
 
@@ -216,7 +178,7 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
 
 
             //
-            this.root = this.build(pointList, 0);
+            this.root = this.build(pointList, 0, null, undefined);
             console.log(" this is the root: ", this.root);
 
         };
@@ -225,5 +187,6 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
 
 
     })); // define
+
 
 
