@@ -27,7 +27,7 @@
   <!-- centered region with drawing canvas and parameter area -->
   <div align="center">
 
-      <canvas id="drawing_area" width="500" height="400" style="position:relative;">
+      <canvas class="boxes" id="drawing_area" width="500" height="400" style="position:relative;">
           <!-- NOTE: the "position:relative" is required due to the current
                implementation of mouse coordinate processing in module "util". -->
           If you see this text, your browser probably does not
@@ -35,13 +35,15 @@
       </canvas>
 
 
-      <div id="param_area" >
+      <div id="param_area" class="boxes" >
 
         <h3>Create Objects:</h3>
 
-        <button id="btnNewLine"   type="button"   >New Line </button><br>
-        <button id="btnNewCircle"   type="button"   >New Circle</button><br>
-        <button id="btnNewPoint"   type="button"   >New Point </button>
+        <button id="btnNewLine"   type="button"   >Line </button><br>
+        <button id="btnNewCircle"   type="button"   >Circle</button><br>
+        <button id="btnNewPoint"   type="button"   >Point </button><br>
+        <button id="newParametricCurve" type="button">Parametric Curve</button><br>
+        <button id="newBezierCurve" type="button">Bezier Curve</button><br>
         <!-- add more here... -->
 
         <h3>Selected Element:</h3>
@@ -65,6 +67,27 @@
 
     </div>
 
+      <div id="param_area2" class="boxes">
+
+          <h3>General curve options:</h3>
+          <label for="inputSegments">segments:</label>
+          <input id="inputSegments" name="inputSegments" type="number" value="20"><br>
+          <label for="visTickMarks">Tick marks:</label>
+          <input type="checkbox" id="visTickMarks">
+
+          <h3>Parametric curve options:</h3>
+          <label for="inputXt">x(t):</label>
+          <input id="inputXt" name="inputXt" type="text" value="200+100*Math.sin(t)"><br>
+          <label for="inputYt">y(t):</label>
+          <input id="inputYt" name="inputYt" type="text" value="200+100*Math.cos(t)"><br>
+          <label for="inputMint">min t:</label>
+          <input id="inputMint" name="inputMint" type="number" value="0"><br>
+          <label for="inputMaxt">max t:</label>
+          <input id="inputMaxt" name="inputMaxt" type="number" value="3.14"><br>
+
+
+
+      </div>
 
 
 
