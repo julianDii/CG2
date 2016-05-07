@@ -119,7 +119,9 @@ define(["jquery", "Line", "point","circle", "util","KdTree_con","kdutil","Parame
                 sceneController.select(circle); // this will also redraw
             });
 
-
+            /**
+             *  Event handler for the New parametric curve button.
+             */
             $("#newParametricCurve").click(function() {
                 try {
                     var xT = $("#inputFt").val();
@@ -146,6 +148,20 @@ define(["jquery", "Line", "point","circle", "util","KdTree_con","kdutil","Parame
                     alert(e.message);
                 }
 
+
+            });
+
+            /**
+             * Handles event for the amount of segments.
+             */
+            $("#inputSegments").change(function () {
+
+                var obj = sceneController.getSelectedObject();
+
+                obj.line_segments = this.value;
+
+                sceneController.deselect();
+                sceneController.select(obj);
 
             });
 
@@ -176,19 +192,44 @@ define(["jquery", "Line", "point","circle", "util","KdTree_con","kdutil","Parame
                 $('#inColor').val(obj.lineStyle.color);
                 $('#inRadius').val(obj.radius);
                 $('#inNumber').val(obj.lineStyle.width);
+                $('#inputSegments').val(obj.line_segments);
 
                 if (obj.radius==undefined) {
 
                     $('#inRadius').hide();
                     $('#ra').hide();
-
-
+                    
                 } else {
                     $('#inRadius').show();
                     $('#ra').show();
                 }
 
             });
+
+            /**
+             *  Event handler for the New bezier curve button.
+             */
+            $("#newBezierCurve").click( (function(){
+
+                var lineStyle = {
+                    width: $("#inNumber").val() || Math.floor(Math.random()*3)+1,
+                    color:  randomColor()
+                };
+
+                var point0 = [randomX(), randomY()];
+                var point1 = [randomX(), randomY()];
+                var point2 = [randomX(), randomY()];
+                var point3 = [randomX(), randomY()];
+
+                var segments = parseInt($("#inputSegments").val());
+                var tick = $("#visTickMarks").is(':checked');
+
+                var bezierCurve = new Beziercurve(point0, point1, point2, point3, segments, lineStyle, tick);
+
+                scene.addObjects([bezierCurve]);
+
+                sceneController.deselect();
+            }));
 
 
             /**
@@ -278,12 +319,13 @@ define(["jquery", "Line", "point","circle", "util","KdTree_con","kdutil","Parame
 
                 var numPoints = $('#inPoints').val();
 
-                if (numPoints == "") {
-                    numPoints =10;
+                if (numPoints === "") {
 
+                    numPoints =10;
 
                 }
 
+                // creates points for the amount of the user input or default
                 for(var i=0; i<numPoints; ++i) {
                     var point = new Point([randomX(), randomY()], style);
                     scene.addObjects([point]);
