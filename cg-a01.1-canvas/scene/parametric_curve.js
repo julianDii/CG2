@@ -47,13 +47,18 @@ define(["jquery","util","vec2","Scene"],
          */
         ParametricCurve.prototype.draw = function (context) {
 
+            // tmax-tmin is the entire distance t will have to return.
+            // distance is the amount t will getting higher every passing.
             var distance = (this.tMax - this.tMin) / this.lineSegments;
 
 
             // iterate over all line segments
             for (var i = 0; i < this.lineSegments; i++) {
 
+                // calculating the next t by adding distance.
                 var t = this.tMin + i * distance;
+
+                // eval evaluates a string and performs it.
 
                 try {
                     // for every line segment we create a new parametric point
@@ -64,9 +69,14 @@ define(["jquery","util","vec2","Scene"],
 
             context.beginPath();
 
+            // declaration of the starting point
             var startPoint = this.pointList[0];
+
+
             context.moveTo(startPoint[0], startPoint[1]);
 
+            //this loop iterates over all points pushed into the pointlist from the equations.
+            //It calls the line to method with the x,y of the certain point.
             for (var i = 1; i < this.pointList.length; i++) {
 
                 var ix = this.pointList[i][0];
@@ -89,7 +99,7 @@ define(["jquery","util","vec2","Scene"],
          */
         ParametricCurve.prototype.isHit = function (context,pos) {
 
-            // project point on circle, get parameter of that projection point
+            // project point on line, get parameter of that projection point
             var t = 0;
             for (var i = 0; i < this.pointList.length - 1; i++) {
                 // project point on line, get parameter of that projection point
