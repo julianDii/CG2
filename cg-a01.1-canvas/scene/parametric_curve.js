@@ -69,10 +69,10 @@ define(["jquery","util","vec2","Scene"],
 
             for (var i = 1; i < this.pointList.length; i++) {
 
-                var iX = this.pointList[i][0];
-                var iY = this.pointList[i][1];
+                var ix = this.pointList[i][0];
+                var iy = this.pointList[i][1];
 
-                context.lineTo(iX,iY);
+                context.lineTo(ix,iy);
             }
 
             context.lineWidth = this.lineStyle.width;
