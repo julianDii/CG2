@@ -21,6 +21,8 @@ requirejs.config({
             '../lib/jquery-1.7.2.min'],
 
         "util" : "./utils/util",
+        "point":"./scene/point",
+        "circle":"./scene/circle",
 
         "Scene" : "./scene/scene",
         "Line" : "./scene/line",
@@ -30,7 +32,13 @@ requirejs.config({
         "vec2" : "./math/vec2",
 
         "SceneController" : "./controller/scene_controller",
-        "HtmlController" : "./controller/html_controller"
+        "HtmlController" : "./controller/html_controller",
+        "kdutil" : "./kdtree/kdutil",
+        "KdTree_con" : "./kdtree/kdtree",
+        "KdNode" : "./kdtree/kdnode",
+        "BoundingBox" : "./kdtree/boundingbox",
+        "ParametricCurve": "./scene/parametric_curve",
+        "BezierCurve": "./scene/bezier_curve"
     }
 });
 
