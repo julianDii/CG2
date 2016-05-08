@@ -13,7 +13,7 @@
 
 /* requireJS module definition */
 define(["jquery", "Line", "point","circle", "util","KdTree_con","kdutil","ParametricCurve","BezierCurve"],
-    (function($, Line, Point, Circle, Util,  KdTree_con, KdUtil, ParametricCurve, Beziercurve) {
+    (function($, Line, Point, Circle, Box, Util,  KdTree_con, KdUtil, ParametricCurve, Beziercurve) {
         "use strict";
 
         /*
@@ -118,6 +118,28 @@ define(["jquery", "Line", "point","circle", "util","KdTree_con","kdutil","Parame
                 sceneController.deselect();
                 sceneController.select(circle); // this will also redraw
             });
+
+            /*
+             * event handler for "new box button".
+             */
+            $("#btnNewBox").click( (function() {
+
+                // create the actual line and add it to the scene
+                var style = {
+                    width: Math.floor(Math.random()*3)+1,
+                    color: randomColor()
+                };
+
+                var box = new Box( [randomX(),randomY()],
+                    randomRadius(),
+                    style );
+                scene.addObjects([box]);
+
+                // deselect all objects, then select the newly created object
+                sceneController.deselect();
+                sceneController.select(box); // this will also redraw
+
+            }));
 
             /**
              *  Event handler for the New parametric curve button.
