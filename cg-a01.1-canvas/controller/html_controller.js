@@ -246,6 +246,10 @@ define(["jquery", "Line", "point","circle", "util","KdTree_con","kdutil","Parame
 
             });
 
+
+
+
+
             /**
              * Sets the color and the width to the value of the selected object.
              */
@@ -255,7 +259,10 @@ define(["jquery", "Line", "point","circle", "util","KdTree_con","kdutil","Parame
 
                 $("#inNumber").val(obj.lineStyle.width);
                 $("#inColor").val(obj.lineStyle.color);
-                $("#inRadius").val(obj.radius)
+                $("#inRadius").val(obj.radius);
+                $("#inputSegments").val(obj.line_segments)
+
+
 
             });
 

@@ -17,13 +17,15 @@ define(["jquery","util","vec2","Scene"],
          * This constructor is called when a new ParametricCurve is created.
          * @param ft first function
          * @param gt second function
-         * @param tMin the min interval
-         * @param tMax th max interval
+         * @param tMin the minimum t
+         * @param tMax th maximum t
          * @param lineSegments
          * @param lineStyle
          * @constructor
          */
         var ParametricCurve = function (ft, gt, tMin, tMax, lineSegments, lineStyle) {
+
+            console.log("Creating parametric curve with f(t)=", ft, ", g(t)=", gt, ", minT=", tMin, "maxT=", tMax, ",", lineSegments, "segments and linestyle", lineStyle);
 
             this.ft = ft || "150+150*Math.sin(t)";
             this.gt = gt || "150+150*Math.cos(t)";

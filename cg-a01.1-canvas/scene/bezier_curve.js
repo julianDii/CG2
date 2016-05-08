@@ -34,24 +34,49 @@ define(["util", "vec2", "Scene", "PointDragger"],
                     color: "#0000AA"
                 };
 
-            // bernstein polynoms
+            /**
+             * Berstein Polynom 1
+             * @param t
+             * @returns {number}
+             */
             this.bp0 = function (t) {
                 return Math.pow(1 - t, 3);
             };
+
+            /**
+             * Berstein Polynom 2
+             * @param t
+             * @returns {number}
+             */
 
             this.bp1 = function (t) {
                 return 3 * Math.pow(1 - t, 2) * t;
             };
 
+            /**
+             * Berstein Polynom 3
+             * @param t
+             * @returns {number}
+             */
+
             this.bp2 = function (t) {
                 return 3 * (1 - t) * Math.pow(t, 2);
             };
+
+            /**
+             * Berstein Polynom 4
+             * @param t
+             * @returns {number}
+             */
 
             this.bp3 = function (t) {
                 return Math.pow(t, 3);
             };
 
-            //function of bezier curve with the polygon points and polynoms
+            /**
+             * Draws the bezier curve to provided context.
+             * @param context
+             */
             this.bezierCurve = function (coordinate, t) {
                 return (this.bp0(t) * this.point_0[coordinate]) +
                     (this.bp1(t) * this.point_1[coordinate]) +
@@ -63,6 +88,7 @@ define(["util", "vec2", "Scene", "PointDragger"],
 
 
         BezierCurve.prototype.draw = function (context) {
+           
             //calculating the Points
             this.pointList = [];
             this.pointList.push([this.point_0[0], this.point_0[1]]);
@@ -73,6 +99,7 @@ define(["util", "vec2", "Scene", "PointDragger"],
                 this.pointList.push([px, py]);
             }
 
+            // draw bezier curve
             context.beginPath();
             var firstPoint = this.pointList[0];
             context.moveTo(firstPoint[0], firstPoint[1]);
@@ -104,7 +131,7 @@ define(["util", "vec2", "Scene", "PointDragger"],
         // test whether the mouse position is on this bezier curve.
         BezierCurve.prototype.isHit = function (context, pos) {
 
-            // project point on circle, get parameter of that projection point
+            // project point on curve, get parameter of that projection point
             var t = 0;
             for (var i = 0; i < this.pointList.length - 1; i++) {
                 // project point on line, get parameter of that projection point
@@ -141,27 +168,66 @@ define(["util", "vec2", "Scene", "PointDragger"],
             };
             var self = this;
 
+            /**
+             * dragger pos of point 0.
+             * @returns {*|number[]}
+             */
             var getPoint0 = function () {
                 return self.point_0;
             };
+
+            /**
+             * dragger pos of point 1
+             * @returns {*|number[]}
+             */
             var getPoint1 = function () {
                 return self.point_1;
             };
+
+            /**
+             * dragger pos of point 2.
+             * @returns {*|number[]}
+             */
             var getPoint2 = function () {
                 return self.point_2;
             };
+
+            /**
+             * dragger pos of point 3.
+             * @returns {*|number[]}
+             */
             var getPoint3 = function () {
                 return self.point_3;
             };
+
+            /**
+             * set the position of point 0.
+             * @param ev
+             */
             var setPoint0 = function (ev) {
                 self.point_0 = ev.position;
             };
+
+            /**
+             * set the position of point 1.
+             * @param ev
+             */
             var setPoint1 = function (ev) {
                 self.point_1 = ev.position;
             };
+
+            /**
+             * set the position of point 2.
+             * @param ev
+             */
             var setPoint2 = function (ev) {
                 self.point_2 = ev.position;
             };
+
+            /**
+             * set the position of point 3.
+             * @param ev
+             */
             var setPoint3 = function (ev) {
                 self.point_3 = ev.position;
             };
@@ -174,7 +240,7 @@ define(["util", "vec2", "Scene", "PointDragger"],
             ];
         };
 
-        // this module only exports the constructor for Circle objects
+
         return BezierCurve;
 
-    })); // define
+    }));
