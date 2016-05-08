@@ -158,7 +158,7 @@ define(["jquery", "Line", "point","circle", "util","KdTree_con","kdutil","Parame
 
                 var obj = sceneController.getSelectedObject();
 
-                obj.line_segments = this.value;
+                obj.lineSegments = this.value;
 
                 sceneController.deselect();
                 sceneController.select(obj);
@@ -192,7 +192,8 @@ define(["jquery", "Line", "point","circle", "util","KdTree_con","kdutil","Parame
                 $('#inColor').val(obj.lineStyle.color);
                 $('#inRadius').val(obj.radius);
                 $('#inNumber').val(obj.lineStyle.width);
-                $('#inputSegments').val(obj.line_segments);
+                $('#inputSegments').val(obj.lineSegments);
+
 
                 if (obj.radius==undefined) {
 
