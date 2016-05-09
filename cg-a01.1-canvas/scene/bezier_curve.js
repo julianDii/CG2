@@ -92,7 +92,11 @@ define(["util", "vec2", "Scene", "PointDragger"],
             //calculating the Points
             this.pointList = [];
             this.pointList.push([this.point_0[0], this.point_0[1]]);
+
+
             for (var i = 1; i <= this.line_segments; i++) {
+
+                
                 var t = 1 / this.line_segments * i;
                 var px = this.bezierCurve(0, t);
                 var py = this.bezierCurve(1, t);

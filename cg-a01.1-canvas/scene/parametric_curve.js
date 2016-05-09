@@ -58,6 +58,7 @@ define(["jquery","util","vec2","Scene"],
                 // calculating the next t by adding distance.
                 var t = this.tMin + i * distance;
 
+                
                 // eval evaluates a string and performs it.
 
                 try {

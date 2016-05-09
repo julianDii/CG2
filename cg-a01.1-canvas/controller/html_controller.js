@@ -179,9 +179,12 @@ define(["jquery", "Line", "point","circle", "Box", "util","KdTree_con","kdutil",
             $("#inputSegments").change(function () {
 
                 var obj = sceneController.getSelectedObject();
+                console.log(obj);
 
                 obj.lineSegments = this.value;
+                obj.line_segments = this.value;
 
+                console.log(this.value);
                 sceneController.deselect();
                 sceneController.select(obj);
 
