@@ -106,7 +106,7 @@ define(["kdutil", "KdNode", "vec2", "Scene", "BoundingBox"],
                 // container for the rightchildren
                 var rightChildren = pointList.slice(medianPos + 1);
 
-                //<Extrahiere Punkte für die rechte Unterbaumhälfte>
+                //<Extrahiere Punkte für die rechte Unterbaumhälfte
                 node.rightChild = this.build(rightChildren, axis, node, false);
 
 

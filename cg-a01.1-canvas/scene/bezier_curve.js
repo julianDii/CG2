@@ -119,13 +119,12 @@ define(["util", "vec2", "Scene", "PointDragger"],
 
             // connect the draggers
             context.beginPath();
-            context.moveTo(this.point_0[0], this.point_0[1]);
+
+            
             context.lineTo(this.point_1[0], this.point_1[1]);
-            context.moveTo(this.point_1[0], this.point_1[1]);
             context.lineTo(this.point_2[0], this.point_2[1]);
-            context.moveTo(this.point_2[0], this.point_2[1]);
             context.lineTo(this.point_3[0], this.point_3[1]);
-            context.moveTo(this.point_3[0], this.point_3[1]);
+
             context.lineWidth = this.lineStyle.width;
             context.strokeStyle = this.lineStyle.color;
             context.stroke();
