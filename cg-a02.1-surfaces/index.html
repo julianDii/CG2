@@ -32,7 +32,6 @@
 
         <button id="btnRandom"   type="button"   >Random</button>
         <button id="btnBand" type="button"   >Band</button>
-        <button id="btnEllipsoid" type="button"   >Ellipsoid</button>
         <button id="btnParametric" type="button"   >Parametric</button>
         <button id="sphere" type="button">Sphere</button>
         <button id="cube" type="button">Cube</button>
@@ -67,9 +66,66 @@
             </tr>
         </table>
 
+        <table id="parametric">
+
+            <div style="font-size: 12px">
+
+                Animation<input id="cAnimate" type="checkbox" style="width:20px">
+                Wireframe<input id="cWireframe" type="checkbox" style="width:20px">
+
+            </div>
+
+            <tr>
+                <td>
+                    <button id="btnSphere" type="button">Sphere</button>
+                    <button id="btnTorus" type="button">Torus</button>
+                    <button id="btnPillow" type="button">Pillow</button>
+                    <button id="btnCube" type="button">Cube</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Function x-Direction:</td>
+                <td><input id="xDim" class="funct" type="text">
+            </tr>
+            <tr>
+                <td>Function y-Direction:</td>
+                <td><input id="yDim" class="funct" type="text">
+            </tr>
+            <tr>
+                <td>Function z-Direction:</td>
+                <td><input id="zDim" class="funct" type="text">
+            </tr>
+            <tr>
+                <td>Number of Segments u-Direction:</td>
+                <td><input id="uSegments" class="objParam" type="number" min="1" max="10000">
+            </tr>
+            <tr>
+                <td>Number of Segments v-Direction:</td>
+                <td><input id="vSegments" class="objParam" type="number" min="1" max="10000">
+            </tr>
+            <tr>
+                <td>uMin</td>
+                <td><input id="uMin" class="objParam" type="number">
+            </tr>
+            <tr>
+                <td>uMax</td>
+                <td><input id="uMax" class="objParam" type="number">
+            </tr>
+            <tr>
+                <td>vMin</td>
+                <td><input id="vMin" class="objParam" type="number">
+            </tr>
+            <tr>
+                <td>vMax</td>
+                <td><input id="vMax" class="objParam" type="number">
+            </tr>
+            <tr>
+                <td><button id="btnNewParametric" type="button">Create Parametric surface</button></td>
+                <td></td>
+            </tr>
+        </table>
+
     </div>
-
-
 
   </div>
 

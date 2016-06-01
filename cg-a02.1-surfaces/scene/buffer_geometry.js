@@ -17,18 +17,39 @@
 
 /* requireJS module definition */
 define(["three"],
-    (function(THREE) {
+    (function (THREE) {
 
         "use strict";
 
         var BufferGeometry = function () {
 
-            this.mesh     = undefined;
+            var alt = false;  //wechsel zwischen Punkten und Dreiecken
+
+            this.mesh = undefined;
+
             this.geometry = new THREE.BufferGeometry();
-            this.material = new THREE.PointsMaterial( {
-                color: 0xaaaaaa,
-                size: 10, vertexColors: THREE.VertexColors
-            } );
+
+            if (alt) {
+
+                this.material = new THREE.PointsMaterial({
+                    color: 0xaaaaaa,
+                    size: 10, vertexColors: THREE.VertexColors
+                });
+
+
+            }
+            else {
+
+                this.material = new THREE.MeshBasicMaterial({
+                    color: 0xFFaaaa,
+                    wireframe: true,
+                    side: THREE.DoubleSide,
+                    vertexColors: THREE.FaceColors
+                });
+
+
+
+            };
 
             /**
              * Adds a vertex attribute, we assume each element has three components, e.g.
@@ -38,17 +59,29 @@ define(["three"],
              * @param name vertex attributes name, e.g. position, color, normal
              * @param buffer
              */
-            this.addAttribute = function(name, buffer) {
-                this.geometry.addAttribute( name, new THREE.BufferAttribute( buffer, 3 ) );
+            this.addAttribute = function (name, buffer) {
+                this.geometry.addAttribute(name, new THREE.BufferAttribute(buffer, 3));
                 this.geometry.computeBoundingSphere();
 
-                this.mesh = new THREE.Points( this.geometry, this.material );
-            }
+                if (alt)
+                    this.mesh = new THREE.Points(this.geometry, this.material);
+                else
+                    this.mesh = new THREE.Mesh(this.geometry, this.material);
+            };
 
-            this.getMesh = function() {
+            this.setIndex = function (buffer) {
+                this.geometry.setIndex(new THREE.BufferAttribute(buffer, 1));
+            };
+
+            this.setWireframe = function (boolean) {
+                this.material.wireframe = boolean;
+            };
+
+            this.getMesh = function () {
                 return this.mesh;
-            }
+            };
         };
 
         return BufferGeometry;
-    }));
+
+    }));;

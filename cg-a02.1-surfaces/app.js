@@ -26,8 +26,10 @@ requirejs.config({
         "band" : "./models/band",
         "util"  : "./utils/util",
         "shaders" : "./shaders",
+        "BufferGeometry_Normal" : "./scene/buffer_geometry_normal",
         "BufferGeometry" : "./scene/buffer_geometry",
-        "HtmlController": "./controller/html_controller"
+        "HtmlController": "./controller/html_controller",
+        "parametric": "./models/parametric"
 
     },
     shim: {

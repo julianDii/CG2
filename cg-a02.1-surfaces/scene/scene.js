@@ -25,12 +25,17 @@ define(["three", "util", "shaders", "BufferGeometry", "random", "band"],
             // the scope of the object instance
             var scope = this;
 
+            var rotation;
+
             scope.renderer = renderer;
             scope.t = 0.0;
 
             scope.camera = new THREE.PerspectiveCamera( 66, width / height, 0.1, 2000 );
             scope.camera.position.z = 1000;
             scope.scene = new THREE.Scene();
+
+
+
 
             // Add a listener for 'keydown' events. By this listener, all key events will be
             // passed to the function 'onDocumentKeyDown'. There's another event type 'keypress'.
@@ -59,11 +64,43 @@ define(["three", "util", "shaders", "BufferGeometry", "random", "band"],
                     // Cursor up
                 }
             };
+
+            this.animate = function () {
+
+                    rotation = setInterval(function () {
+                        scope.currentMesh.rotation.y += 0.0025;
+                        scope.currentMesh.rotation.x += 0.0020;
+                        scope.currentMesh.rotation.z += 0.0030;
+                    }, 10);
+
+            }
+
+
+
+            this.clearScene = function () {
+
+                if (scope.scene.children.length !=0) {
+
+                    for( var  i = scope.scene.children.length - 1; i >= 0; i--) {
+
+                        var obj = scope.scene.children[i];
+                        scope.scene.remove(obj);
+                    }
+                }
+            }
+
+            /**
+             * THis mehod is needed to add Geometries to the scene.
+             * @param geometry
+             */
             this.add = function (geometry) {
+
 
                 scope.scene.add(geometry);
 
+
             }
+
 
             this.addBufferGeometry = function(bufferGeometry) {
 
