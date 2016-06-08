@@ -25,6 +25,8 @@ define(["three", "util", "shaders", "BufferGeometry", "random", "band"],
             // the scope of the object instance
             var scope = this;
 
+            var ani;
+
             var rotation;
 
             scope.renderer = renderer;
@@ -65,15 +67,20 @@ define(["three", "util", "shaders", "BufferGeometry", "random", "band"],
                 }
             };
 
-            this.animate = function () {
+            this.animate = function (state) {
 
-                    rotation = setInterval(function () {
-                        scope.currentMesh.rotation.y += 0.0025;
-                        scope.currentMesh.rotation.x += 0.0020;
-                        scope.currentMesh.rotation.z += 0.0030;
-                    }, 10);
-
-            }
+                if (scope.currentMesh !== undefined) {
+                    if (state) {
+                        ani = setInterval(function () {
+                            scope.currentMesh.rotation.y += 0.0025;
+                            scope.currentMesh.rotation.x += 0.0020;
+                            scope.currentMesh.rotation.z += 0.0030;
+                        }, 10);
+                    } else {
+                        clearInterval(ani);
+                    }
+                }
+            };
 
 
 

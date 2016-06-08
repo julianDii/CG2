@@ -9,7 +9,6 @@
  *
  */
 
-
 /* requireJS module definition */
 define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometry_Normal"],
     (function($,BufferGeometry, Random, Band, ParametricSurface,BufferGeometry_Normal) {
@@ -150,7 +149,6 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 };
 
                 var points = $('#cPoints').is(':checked');
-                
                 var wireframe = $('#cWireframe').is(':checked');
                 var mesh = $('#cMesh').is(':checked');
 
@@ -161,9 +159,7 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 bufferGeometryParametric.addAttribute("color", paramSurface.getColors());
                 bufferGeometryParametric.setIndex(paramSurface.getIndices());
 
-
                 scene.addBufferGeometry(bufferGeometryParametric);
-
 
             }));
 
@@ -216,9 +212,7 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
             var ambientLight = new THREE.AmbientLight(0x000000);
             scene.add(ambientLight);
 
-
         };
-
 
         //definition of parametric surfaces
 
@@ -269,7 +263,6 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
             $("#vMin").val(-0.5 * Math.PI);
             $("#vMax").val(0.5 * Math.PI);
         });
-
 
         // return the constructor function
         return HtmlController;

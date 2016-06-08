@@ -22,9 +22,7 @@ define(["three"],
         "use strict";
 
         var BufferGeometry = function (points,wireframe,mesh) {
-
-
-
+            
             this.mesh = undefined;
 
             this.geometry = new THREE.BufferGeometry();
@@ -53,21 +51,11 @@ define(["three"],
             if (wireframe) {
                 this.materials.push(new THREE.MeshBasicMaterial({
                     color: 0xaaaaaa,
-                   
                     wireframe: true,
                     vertexColors: THREE.FaceColors
                 }));
             }
-
-
-            /**
-             * Adds a vertex attribute, we assume each element has three components, e.g.
-             * [position_x0, position_y0, position_z0, position_x1, position_y1, position_z1,...]
-             * AddAttribute updates the mesh.
-             *
-             * @param name vertex attributes name, e.g. position, color, normal
-             * @param buffer
-             */
+            
             this.addAttribute = function(name, buffer) {
                 this.geometry.addAttribute(name, new THREE.BufferAttribute(buffer, 3));
                 this.geometry.computeBoundingSphere();
