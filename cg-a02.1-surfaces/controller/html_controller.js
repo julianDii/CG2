@@ -149,17 +149,18 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                     vMax: parseFloat($("#vMax").val()) || 1
                 };
 
+                var points = $('#cPoints').is(':checked');
+                
+                var wireframe = $('#cWireframe').is(':checked');
+                var mesh = $('#cMesh').is(':checked');
+
                 var paramSurface = new ParametricSurface(paramFunction, config);
-                var bufferGeometryParametric = new BufferGeometry();
+                var bufferGeometryParametric = new BufferGeometry(points,wireframe,mesh);
 
                 bufferGeometryParametric.addAttribute("position", paramSurface.getPositions());
                 bufferGeometryParametric.addAttribute("color", paramSurface.getColors());
                 bufferGeometryParametric.setIndex(paramSurface.getIndices());
-                bufferGeometryParametric.setWireframe($('#cWireframe').is(':checked'));
 
-                $('#cWireframe').change(function () {
-                    bufferGeometryParametric.setWireframe($('#cWireframe').is(':checked'));
-                });
 
                 scene.addBufferGeometry(bufferGeometryParametric);
 
