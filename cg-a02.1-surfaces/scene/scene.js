@@ -12,8 +12,8 @@
 
 
 /* requireJS module definition */
-define(["three", "util", "shaders", "BufferGeometry", "random", "band"],
-    (function(THREE, util, shaders, BufferGeometry, Random, Band) {
+define(["three", "util", "shaders", "BufferGeometry", "random", "band", "objMesh"],
+    (function(THREE, util, shaders, BufferGeometry, Random, Band, ObjMesh) {
 
         "use strict";
 

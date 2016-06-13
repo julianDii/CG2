@@ -10,8 +10,8 @@
  */
 
 /* requireJS module definition */
-define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometry_Normal"],
-    (function($,BufferGeometry, Random, Band, ParametricSurface,BufferGeometry_Normal) {
+define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometry_Normal", "objMesh"],
+    (function($,BufferGeometry, Random, Band, ParametricSurface,BufferGeometry_Normal, ObjMesh) {
         "use strict";
 
         /*
@@ -263,6 +263,20 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
             $("#vMin").val(-0.5 * Math.PI);
             $("#vMax").val(0.5 * Math.PI);
         });
+
+        $("#btnOjLoader").click((function () {
+
+            scene.clearScene();
+            addLights();
+
+            $("#random").hide();
+            $("#band").hide();
+            $('#parametric').hide();
+
+            var myObjMesh = new ObjMesh();
+            scene.add(myObjMesh.getMesh());
+
+        }));
 
         // return the constructor function
         return HtmlController;
