@@ -29,7 +29,9 @@ requirejs.config({
         "BufferGeometry_Normal" : "./scene/buffer_geometry_normal",
         "BufferGeometry" : "./scene/buffer_geometry",
         "HtmlController": "./controller/html_controller",
-        "parametric": "./models/parametric"
+        "parametric": "./models/parametric",
+        "objloader": "./obj/loaders/OBJLoader",
+        "shape_from_file": "./models/shape_from_file"
 
     },
     shim: {

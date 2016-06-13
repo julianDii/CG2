@@ -10,8 +10,8 @@
  */
 
 /* requireJS module definition */
-define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometry_Normal"],
-    (function($,BufferGeometry, Random, Band, ParametricSurface,BufferGeometry_Normal) {
+define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometry_Normal","shape_from_file"],
+    (function($,BufferGeometry, Random, Band, ParametricSurface,BufferGeometry_Normal, Shape_from_file) {
         "use strict";
 
         /*
@@ -20,15 +20,56 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
          */
         var HtmlController = function(scene) {
 
+            //obj-loader
+
+            var wait = function(shape_from_file) {
+                if (shape_from_file.isLoaded()) {
+                    var obj_geometry = shape_from_file.getLoadedObj();
+                    obj_geometry.scale.x = 50;
+                    obj_geometry.scale.y = 50;
+                    obj_geometry.scale.z = 50;
+                    obj_geometry.traverse(function(child) {
+                        if (child instanceof THREE.Mesh) {
+                            child.geometry.computeFaceNormals();
+                            child.geometry.computeVertexNormals(true);
+                            child.material = new THREE.MeshPhongMaterial({
+                                color: 'lightgray',
+                                shading: THREE.SmoothShading
+                            });
+                        }
+                    });
+                    scene.add(obj_geometry); //obj_mesh);
+                    return;
+                } else {
+                    setTimeout(function() {
+                        wait(shape_from_file);
+                    }, 30);
+                }
+            };
+
+            $("#btnLoadObj").click((function() {
+
+                scene.clearScene();
+                addLights();
+
+                var path = '../cg-a02.1-surfaces/obj/obj/' + $("#obj_select").val() + '.obj';
+                var obj_tool = new Shape_from_file(path);
+                wait(obj_tool);
+
+            }));
 
             $("#random").show();
             $("#band").hide();
             $('#parametric').hide();
+            $('#table_loaders').hide();
+
 
             $("#btnRandom").click( (function() {
                 $("#random").show();
                 $("#band").hide();
                 $('#parametric').hide();
+                $('#table_loaders').hide();
+
 
             }));
 
@@ -36,12 +77,24 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 $("#random").hide();
                 $("#band").show();
                 $('#parametric').hide();
+                $('#table_loaders').hide();
             }));
             $('#btnParametric').click((function () {
 
                 $("#random").hide();
                 $("#band").hide();
                 $('#parametric').show();
+                $('#table_loaders').hide();
+            }));
+
+            $('#obj').click((function () {
+
+                $("#random").hide();
+                $("#band").hide();
+                $('#parametric').hide();
+                $('#table_loaders').hide();
+                $('#table_loaders').show();
+
             }));
 
             $("#btnNewRandom").click( (function() {
@@ -147,8 +200,10 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                     vMin: parseFloat($("#vMin").val()) || -1,
                     vMax: parseFloat($("#vMax").val()) || 1
                 };
+                var points;
 
-                var points = $('#cPoints').is(':checked');
+
+                points = $('#cPoints').is(':checked');
                 var wireframe = $('#cWireframe').is(':checked');
                 var mesh = $('#cMesh').is(':checked');
 
