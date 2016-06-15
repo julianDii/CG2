@@ -14,12 +14,12 @@ define(["three","random"],
 
         var ParametricSurface = function (posFunc, config) {
 
-            var segmentsU = config.uSegments || 10;
-            var segmentsV = config.vSegments || 10;
-            var uMin = config.uMin || Math.PI / 2 * (-1);
-            var uMax = config.uMax || Math.PI / 2;
+            var segmentsU = config.uSegments || 50;
+            var segmentsV = config.vSegments || 50;
+            var uMin = config.uMin || Math.PI * (-1);
+            var uMax = config.uMax || 1;
             var vMin = config.vMin || Math.PI * (-1);
-            var vMax = config.vMax || Math.PI;
+            var vMax = config.vMax || 2*Math.PI;
 
             this.positions = new Float32Array((segmentsU + 1) * (segmentsV + 1) * 3);
             this.colors = new Float32Array(this.positions.length);

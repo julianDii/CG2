@@ -31,7 +31,8 @@ requirejs.config({
         "HtmlController": "./controller/html_controller",
         "parametric": "./models/parametric",
         "objloader": "./obj/loaders/OBJLoader",
-        "shape_from_file": "./models/shape_from_file"
+        "shape_from_file": "./models/shape_from_file", 
+        "robo": "./models/robo"
 
     },
     shim: {

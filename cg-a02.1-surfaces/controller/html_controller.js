@@ -10,8 +10,8 @@
  */
 
 /* requireJS module definition */
-define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometry_Normal","shape_from_file"],
-    (function($,BufferGeometry, Random, Band, ParametricSurface,BufferGeometry_Normal, Shape_from_file) {
+define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometry_Normal","shape_from_file","robo"],
+    (function($,BufferGeometry, Random, Band, ParametricSurface,BufferGeometry_Normal, Shape_from_file, Robo) {
         "use strict";
 
         /*
@@ -63,6 +63,21 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
             $('#parametric').hide();
             $('#table_loaders').hide();
 
+            $("#robo").click((function () {
+
+                $("#random").hide();
+                $("#band").hide();
+                $('#parametric').hide();
+                $('#table_loaders').hide();
+                $('#table_loaders').hide();
+
+                scene.clearScene();
+                addLights();
+
+                var robo = new Robo();
+                scene.addMesh(robo.getMesh());
+
+            }));
 
             $("#btnRandom").click( (function() {
                 $("#random").show();
@@ -79,6 +94,7 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 $('#parametric').hide();
                 $('#table_loaders').hide();
             }));
+
             $('#btnParametric').click((function () {
 
                 $("#random").hide();
@@ -97,7 +113,11 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
 
             }));
 
+
             $("#btnNewRandom").click( (function() {
+
+                scene.clearScene();
+                addLights();
 
                 var numPoints = parseInt($("#numItems").attr("value"));
                 var random = new Random(numPoints);
@@ -167,7 +187,7 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 scene.clearScene();
                 addLights();
                 
-                
+
                 var xDim = $("#xDim").val() || "u*200";
                 var yDim = $("#yDim").val() || "v*200";
                 var zDim = $("#zDim").val() || "0";
@@ -258,7 +278,7 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 var ambientLight = new THREE.AmbientLight(0x000000);
                 scene.add(ambientLight);
 
-            }
+            };
 
             var pointLight = new THREE.DirectionalLight(0xFFFFFF, 1, 100000);
             pointLight.position.set(-3, 7, 7);
@@ -275,8 +295,8 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
             $("#xDim").val("300 * Math.cos(u)");
             $("#yDim").val("300 * Math.cos(v)");
             $("#zDim").val("100 * Math.sin(u)*Math.sin(v)");
-            $("#uSegments").val("25");
-            $("#vSegments").val("25");
+            $("#uSegments").val("20");
+            $("#vSegments").val("20");
             $("#uMin").val(-Math.PI);
             $("#uMax").val(Math.PI);
             $("#vMin").val(-Math.PI);
@@ -287,8 +307,8 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
             $("#xDim").val("(300 + 150 * Math.cos(v))*Math.cos(u)");
             $("#yDim").val("(300 + 150 * Math.cos(v))*Math.sin(u)");
             $("#zDim").val("100 * Math.sin(v)");
-            $("#uSegments").val("25");
-            $("#vSegments").val("25");
+            $("#uSegments").val("20");
+            $("#vSegments").val("20");
             $("#uMin").val(-Math.PI);
             $("#uMax").val(Math.PI);
             $("#vMin").val(-Math.PI);
@@ -298,12 +318,36 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
             $("#xDim").val("500 * Math.cos(u)*Math.cos(v)");
             $("#yDim").val("500 * Math.cos(u)*Math.sin(v)");
             $("#zDim").val("500 * Math.sin(u)");
-            $("#uSegments").val("25");
-            $("#vSegments").val("25");
+            $("#uSegments").val("20");
+            $("#vSegments").val("20");
             $("#uMin").val(-0.5 * Math.PI);
             $("#uMax").val(0.5 * Math.PI);
             $("#vMin").val(-1 * Math.PI);
             $("#vMax").val(1 * Math.PI);
+        });
+
+        $('#btnspirale').click(function () {
+            $("#xDim").val("130 * u*Math.cos(v)");
+            $("#yDim").val("130 * u*Math.sin(v)");
+            $("#zDim").val("130 * v");
+            $("#uSegments").val("20");
+            $("#vSegments").val("20");
+            $("#uMin").val(- Math.PI);
+            $("#uMax").val(Math.PI);
+            $("#vMin").val(-Math.PI);
+            $("#vMax").val(Math.PI);
+        });
+
+        $('#btnmobi').click(function () {
+            $("#xDim").val("20 * (1-u)*(3+Math.cos(v))*(Math.cos(2*Math.PI*u))");
+            $("#yDim").val("20 * (1-u)*(3+Math.cos(v))*Math.sin(2*Math.PI*u)");
+            $("#zDim").val("20 * 6*u+(1-u)*Math.sin(v)");
+            $("#uSegments").val("20");
+            $("#vSegments").val("20");
+            $("#uMin").val(-Math.PI);
+            $("#uMax").val(1);
+            $("#vMin").val(-Math.PI);
+            $("#vMax").val(2*Math.PI);
         });
 
         $('#btnCube').click(function () {
@@ -311,13 +355,15 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
             $("#xDim").val("(300 * Math.sin(u) * Math.cos(v)) / Math.pow(Math.pow(Math.sin(u),6)*(Math.pow(Math.sin(v),6)+Math.pow(Math.cos(v),6)) + Math.pow(Math.cos(u),6), 1/6)");
             $("#yDim").val("(300 * Math.sin(u) * Math.sin(v)) / " + cubeConst);
             $("#zDim").val("(300 * Math.cos(u)) / " + cubeConst);
-            $("#uSegments").val("25");
-            $("#vSegments").val("25");
+            $("#uSegments").val("20");
+            $("#vSegments").val("20");
             $("#uMin").val(-Math.PI);
             $("#uMax").val(Math.PI);
             $("#vMin").val(-0.5 * Math.PI);
             $("#vMax").val(0.5 * Math.PI);
         });
+
+       
 
         // return the constructor function
         return HtmlController;

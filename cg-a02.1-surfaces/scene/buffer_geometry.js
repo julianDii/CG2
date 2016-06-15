@@ -22,7 +22,7 @@ define(["three"],
         "use strict";
 
         var BufferGeometry = function (points,wireframe,mesh) {
-            d
+            
             this.mesh = undefined;
 
             this.geometry = new THREE.BufferGeometry();
