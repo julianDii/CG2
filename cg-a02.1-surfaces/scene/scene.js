@@ -97,7 +97,7 @@ define(["three", "util", "shaders", "BufferGeometry", "random", "band"],
                     }, 10);
 
                     walkInterval = setInterval(function () {
-                        rotationWalk = rotationWalk * -2;
+                        rotationWalk = rotationWalk * -1;
                         
 
                     }, 1000);

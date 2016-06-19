@@ -65,6 +65,8 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
             $("#tangent").hide();
             $("#tangentResult").hide();
 
+            var robo;
+
             $("#robo").click((function () {
 
                 $("#random").hide();
@@ -78,6 +80,7 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 addLights();
 
                 var robo = new Robo();
+                robo.play_sound();
                 scene.addMesh(robo.getMesh());
 
             }));
@@ -275,6 +278,7 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
 
             $('#cAnimate').change(function () {
                 if ($(this).is(':checked')) {
+
                     scene.animate(true);
                 } else {
                     scene.animate(false);

@@ -10,6 +10,21 @@ define(["three","parametric","BufferGeometry"],
 
         var Robo = function () {
 
+            var self = this;
+
+            //Background-Track
+            this.play_sound = function() {
+                var listener = new THREE.AudioListener();
+                self.background_track = new THREE.Audio(listener);
+                var audioLoader = new THREE.AudioLoader();
+                audioLoader.load('../cg-a02.1-surfaces/sounds/DerRoBoTer.mp3', function(buffer) {
+                    self.background_track.setBuffer(buffer);
+                    self.background_track.setLoop(true);
+                    self.background_track.setVolume(0.6);
+                    self.background_track.play();
+                });
+            };
+
             var torsoSize = [500, 300, 200];
             var upperArmSize = [75 / 2, 75 / 2, 100];
             var lowerArmSize = [50, 50, 175];
@@ -121,7 +136,7 @@ define(["three","parametric","BufferGeometry"],
             this.leftEye = new THREE.Object3D();
             this.leftEye.name = "lefteye";
             this.leftEye.translateZ(200);
-            this.leftEye.translateX(-160)
+            this.leftEye.translateX(-160);
             this.leftEye.translateY(Math.PI/2);
 
 
