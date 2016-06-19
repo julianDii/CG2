@@ -38,9 +38,53 @@
         <button id="knot" type="button">Knot</button>
         <button id="obj" type="button">Obj</button>
         <button id="robo" type="button">Create Robot</button>
+        <button id="btnTangentenPoints" type="button">Tangenten</button>
 
         <!-- add more here... -->
         <h3>Selected Object:</h3>
+
+        <table id="tangent">
+            <tr>
+                <td>Punkt1 x:</td>
+                <td><input id="p1x" class="objParam" type="number" placeholder="punkt1 x"></td>
+            </tr>
+            <tr>
+                <td>Punkt1 y:</td>
+                <td><input id="p1y" class="objParam" type="number" placeholder="punkt1 y"></td>
+            </tr>
+            <tr>
+                <td>Punkt2 x:</td>
+                <td><input id="p2x" class="objParam" type="number" placeholder="punkt2 x"></td>
+            </tr>
+            <tr>
+                <td>Punkt2 y:</td>
+                <td><input id="p2y" class="objParam" type="number" placeholder="punkt2 y"></td>
+            </tr>
+            <tr>
+                <td>Radius:</td>
+                <td><input id="r" class="objParam" type="number" placeholder="radius"></td>
+            </tr>
+            <tr>
+                <td><button id="btnNewTangenten" type="button">Tangenten berechnen</button></td>
+            </tr>
+
+        </table>
+
+        <table id="tangentResult">
+            <tr>
+                <td>Punkt3 x:</td>
+                <td><output id="p3x" type="number" ></output></td>
+                <td>Punkt3 y:</td>
+                <td><output id="p3y" type="number" ></output></td>
+            </tr>
+            <tr>
+                <td>Punkt4 x:</td>
+                <td><output id="p4x" type="number" ></output></td>
+                <td>Punkt4 y:</td>
+                <td><output id="p4y" type="number" ></output></td>
+            </tr>
+        </table>
+
 
 
         <table id="table_loaders">

@@ -62,6 +62,8 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
             $("#band").hide();
             $('#parametric').hide();
             $('#table_loaders').hide();
+            $("#tangent").hide();
+            $("#tangentResult").hide();
 
             $("#robo").click((function () {
 
@@ -69,7 +71,8 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 $("#band").hide();
                 $('#parametric').hide();
                 $('#table_loaders').hide();
-                $('#table_loaders').hide();
+                $("#tangent").hide();
+                $("#tangentResult").hide();
 
                 scene.clearScene();
                 addLights();
@@ -84,7 +87,8 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 $("#band").hide();
                 $('#parametric').hide();
                 $('#table_loaders').hide();
-
+                $("#tangent").hide();
+                $("#tangentResult").hide();
 
             }));
 
@@ -93,6 +97,8 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 $("#band").show();
                 $('#parametric').hide();
                 $('#table_loaders').hide();
+                $("#tangent").hide();
+                $("#tangentResult").hide();
             }));
 
             $('#btnParametric').click((function () {
@@ -101,6 +107,8 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 $("#band").hide();
                 $('#parametric').show();
                 $('#table_loaders').hide();
+                $("#tangent").hide();
+                $("#tangentResult").hide();
             }));
 
             $('#obj').click((function () {
@@ -108,8 +116,9 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 $("#random").hide();
                 $("#band").hide();
                 $('#parametric').hide();
-                $('#table_loaders').hide();
+                $("#tangent").hide();
                 $('#table_loaders').show();
+                $("#tangentResult").hide();
 
             }));
 
@@ -137,6 +146,8 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 $("#random").hide();
                 $("#band").hide();
                 $('#parametric').hide();
+                $("#tangent").hide();
+                $("#tangentResult").hide();
 
                 var geometry = new THREE.SphereGeometry( 500, 320, 320 );
                 var material = new THREE.MeshPhongMaterial({color: 0xffff00});
@@ -156,6 +167,8 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 $("#random").hide();
                 $("#band").hide();
                 $('#parametric').hide();
+                $("#tangent").hide();
+                $("#tangentResult").hide();
 
                 var geometry = new THREE.BoxGeometry( 100, 100, 100 );
                 var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
@@ -174,6 +187,8 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 $("#random").hide();
                 $("#band").hide();
                 $('#parametric').hide();
+                $("#tangent").hide();
+                $("#tangentResult").hide();
 
                 var geometry = new THREE.TorusKnotGeometry( 300, 100, 500, 160 );
                 var material = new THREE.MeshPhongMaterial( { color: 0xffff00 } );
@@ -213,7 +228,7 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 };
 
                 var config = {
-                    uSegments: parseInt($("#uSegments").val()) || 5,
+                    btnSp: parseInt($("#uSegments").val()) || 5,
                     vSegments: parseInt($("#vSegments").val()) || 5,
                     uMin: parseFloat($("#uMin").val()) || -1,
                     uMax: parseFloat($("#uMax").val()) || 1,
@@ -363,13 +378,62 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
             $("#vMax").val(0.5 * Math.PI);
         });
 
-       
+
+        // Zusatzaufgabe zu Aufgabe 2.2 (2 Tangenten auf dem Kreis)
+        $("#btnTangentenPoints").click((function () {
+            
+            $("#random").hide();
+            $("#band").hide();
+            $("#ellipsoid").hide();
+            $("#parametric").hide();
+            $("#tangent").show();
+            $("#tangentResult").hide();
+        }));
+
+        $("#btnNewTangenten").click((function () {
+            $("#tangentResult").hide();
+
+            var p1x = ($("#p1x").val()) || 7;
+            var p1y = $("#p1y").val() || 6;
+            var p2x = $("#p2x").val() || 8;
+            var p2y = $("#p2y").val() || 13;
+            var r0 = $("#r").val() || 100;
+
+            var p3x = 0;
+            var p3y = 0;
+            var p4x = 0;
+            var p4y = 0;
+
+            var r1 = (p2x - p1x)/2;
+            console.log("r1 " + r1);
+
+            var a = (r0*r0)/(2*r1);
+            console.log("a " + a);
+
+            var h = Math.sqrt(r0*r0-a*a);
+            console.log("h " + h);
+
+            var p3x = parseInt(p1x) + a;
+            var p3y = parseInt(p1y) + h;
+            var p4x = p3x;
+            var p4y = p1y - h; 
+
+            //result uebergeben
+            $("#p3x").val(p3x);
+            $("#p3y").val(p3y);
+            $("#p4x").val(p4x);
+            $("#p4y").val(p4y);
+            $("#tangentResult").show();
+        }));
 
         // return the constructor function
         return HtmlController;
-
-
     })); // require
+
+
+
+
+
 
 
 
