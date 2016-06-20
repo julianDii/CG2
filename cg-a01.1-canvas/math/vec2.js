@@ -46,6 +46,11 @@ define([],
     vec2.length = function(v) {
         return Math.sqrt(vec2.dot(v,v));
     };
+
+    vec2.normal = function(v){
+         var length = vec2.length(v);
+         return [ v[0]/length, v[1]/length ];
+    };
     
     // project a point onto a line defined by two points.
     // return scalar parameter of where point p is projected 
