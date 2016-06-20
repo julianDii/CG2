@@ -73,14 +73,14 @@ define(["jquery", "Line", "point","circle", "Box", "util","KdTree_con","kdutil",
                     color: randomColor()
                 };
 
-                var p1x = ($("#p1x").val()) || 170;
-                var p1y = $("#p1y").val() || 60;
+                var p1x = parseInt($("#p1x").val()) || 170;
+                var p1y = parseInt($("#p1y").val()) || 60;
                 var p2x = $("#p2x").val() || 300;
                 var p2y = $("#p2y").val() || 50;
                 var r0 = $("#r").val() || 50;
 
-               // var p3p2 = [0,0];
-               // var p4p2 = [0,0];
+                var p3p2 = [0,0];
+                var p4p2 = [0,0];
 
                 var p2 = new Point([p2x, p2y], style);
                 var circle = new Circle([p1x, p1y], r0, style);
