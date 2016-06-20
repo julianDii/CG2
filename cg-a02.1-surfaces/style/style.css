@@ -36,6 +36,9 @@ h3 {
     border-color: #c3c3c3;
     text-align:left;
 }
+.att {
+    width: 12px;
+}
 .funct{
     width: 300px;
 }

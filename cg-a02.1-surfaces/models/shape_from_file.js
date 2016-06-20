@@ -31,7 +31,6 @@ define(["three", "objloader"],
                 return self.loaded;
             }
         }
-
-
+        
         return OBJ_Tool;
     }));

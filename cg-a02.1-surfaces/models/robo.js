@@ -11,25 +11,29 @@ define(["three","parametric","BufferGeometry"],
         var Robo = function () {
 
             var self = this;
-
-            //Background-Track
+            
             this.play_sound = function() {
                 var listener = new THREE.AudioListener();
-                self.background_track = new THREE.Audio(listener);
+                self.track = new THREE.Audio(listener);
                 var audioLoader = new THREE.AudioLoader();
                 audioLoader.load('../cg-a02.1-surfaces/sounds/DerRoBoTer.mp3', function(buffer) {
-                    self.background_track.setBuffer(buffer);
-                    self.background_track.setLoop(true);
-                    self.background_track.setVolume(0.6);
-                    self.background_track.play();
+                    self.track.setBuffer(buffer);
+                    self.track.setLoop(false);
+                    self.track.setVolume(0.4);
+                    self.track.play();
                 });
+            };
+            
+            this.stop_sound = function () {
+                self.track.stop()
+                
             };
 
             var torsoSize = [500, 300, 200];
             var upperArmSize = [75 / 2, 75 / 2, 100];
             var lowerArmSize = [50, 50, 175];
-            var legSize = [45, 45, 220];
-            var footSize = [100, 50, 150];
+            var legSize = [65, 35, 220];
+            var footSize = [100, 50, 250];
             
             //Auge
 
@@ -119,7 +123,11 @@ define(["three","parametric","BufferGeometry"],
 
             this.root = new THREE.Object3D();
 
-            //skelett
+
+
+            this.torso = new THREE.Object3D();
+            this.torso.name = "torso";
+            
             this.head = new THREE.Object3D();
             this.head.name = "head";
 
@@ -131,7 +139,7 @@ define(["three","parametric","BufferGeometry"],
             this.mund.translateY(-90);
             this.mund.translateX(-30);
 
-            this.mund.rotateY(Math.PI/2)
+            this.mund.rotateY(Math.PI/2);
 
             this.leftEye = new THREE.Object3D();
             this.leftEye.name = "lefteye";
@@ -155,9 +163,6 @@ define(["three","parametric","BufferGeometry"],
             this.leftHand.name = "lefthand";
             this.leftHand.rotateX(Math.PI/2);
             this.leftHand.translateZ(175);
-
-            this.torso = new THREE.Object3D();
-            this.torso.name = "torso";
 
             this.leftShoulder = new THREE.Object3D();
             this.leftShoulder.name = "leftShoulder";
@@ -188,12 +193,6 @@ define(["three","parametric","BufferGeometry"],
             this.lowerArmRight = this.lowerArmLeft.clone();
             this.lowerArmRight.name = "lowerArmRight";
 
-            this.handLeft = new THREE.Object3D();
-            this.handLeft.name = "handLeft";
-            this.handLeft.translateY(-lowerArmSize[2] / 2);
-
-            this.handRight = this.handLeft.clone();
-            this.handRight.name = "handRight";
 
             this.leftHip = new THREE.Object3D();
             this.leftHip.name = "leftHip";
@@ -221,7 +220,6 @@ define(["three","parametric","BufferGeometry"],
             this.rightFoot.name = "rightFoot";
 
 
-            //hierarchy
             this.lowerArmLeft.add(this.leftHand);
             this.lowerArmRight.add(this.rightHand);
             this.elbowLeft.add(this.lowerArmLeft);
@@ -233,7 +231,6 @@ define(["three","parametric","BufferGeometry"],
             this.torso.add(this.leftShoulder);
             this.torso.add(this.rightShoulder);
             this.torso.add(this.head);
-
 
             this.leftLeg.add(this.leftFoot);
             this.rightLeg.add(this.rightFoot);
@@ -265,11 +262,6 @@ define(["three","parametric","BufferGeometry"],
                 lowerArmSize[1]), new THREE.MeshPhongMaterial( ));
 
             this.elbowSkin = new THREE.Mesh(new THREE.SphereGeometry(80), new THREE.MeshPhongMaterial());
-
-            this.handSkin = new THREE.Mesh(new THREE.SphereGeometry(lowerArmSize[0], 8, 6, 0, Math.PI * 2, 0, Math.PI / 2), new THREE.MeshPhongMaterial());
-            this.handSkin.rotateX(Math.PI);
-            this.handSkinTop = new THREE.Mesh(new THREE.CircleGeometry(lowerArmSize[0]), new THREE.MeshPhongMaterial());
-            this.handSkinTop.rotateX(Math.PI * 1.5);
 
             this.hipSkin = new THREE.Mesh(new THREE.SphereGeometry(100), new THREE.MeshPhongMaterial());
 

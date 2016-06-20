@@ -65,8 +65,8 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
             $("#tangent").hide();
             $("#tangentResult").hide();
 
-            var robo;
 
+            var robo;
             $("#robo").click((function () {
 
                 $("#random").hide();
@@ -75,12 +75,18 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 $('#table_loaders').hide();
                 $("#tangent").hide();
                 $("#tangentResult").hide();
-
+                $("#cWireframe").hide();
+                $("#cPoints").hide();
+                $("#cMesh").hide();
+                $("#wir").hide();
+                $("#poi").hide();
+                $("#mes").hide();
+                
                 scene.clearScene();
                 addLights();
 
-                var robo = new Robo();
-                robo.play_sound();
+                robo = new Robo();
+
                 scene.addMesh(robo.getMesh());
 
             }));
@@ -112,6 +118,12 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 $('#table_loaders').hide();
                 $("#tangent").hide();
                 $("#tangentResult").hide();
+                $("#cWireframe").show();
+                $("#cPoints").show();
+                $("#cMesh").show();
+                $("#wir").show();
+                $("#poi").show();
+                $("#mes").show();
             }));
 
             $('#obj').click((function () {
@@ -231,16 +243,15 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 };
 
                 var config = {
-                    btnSp: parseInt($("#uSegments").val()) || 5,
+                    uSegments: parseInt($("#uSegments").val()) || 5,
                     vSegments: parseInt($("#vSegments").val()) || 5,
                     uMin: parseFloat($("#uMin").val()) || -1,
                     uMax: parseFloat($("#uMax").val()) || 1,
                     vMin: parseFloat($("#vMin").val()) || -1,
                     vMax: parseFloat($("#vMax").val()) || 1
                 };
+                
                 var points;
-
-
                 points = $('#cPoints').is(':checked');
                 var wireframe = $('#cWireframe').is(':checked');
                 var mesh = $('#cMesh').is(':checked');
@@ -255,6 +266,14 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                 scene.addBufferGeometry(bufferGeometryParametric);
 
             }));
+
+            $("#music").change(function () {
+                if ($(this).is(':checked')) {
+                    robo.play_sound();
+                } else {
+                    robo.stop_sound();
+                }
+            });
 
 
             $("#btnNewBand").click( (function() {
@@ -284,8 +303,7 @@ define(["jquery", "BufferGeometry", "random", "band","parametric","BufferGeometr
                     scene.animate(false);
                 }
             });
-
-
+            
             // helper functions
 
             var addLights = function () {
