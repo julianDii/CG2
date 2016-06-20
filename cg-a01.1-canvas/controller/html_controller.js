@@ -12,8 +12,8 @@
 
 
 /* requireJS module definition */
-define(["jquery", "Line", "point","circle", "Box", "util","KdTree_con","kdutil","ParametricCurve","BezierCurve"],
-    (function($, Line, Point, Circle, Box, Util,  KdTree_con, KdUtil, ParametricCurve, Beziercurve) {
+define(["jquery", "Line", "point","circle", "Box", "util","KdTree_con","kdutil","ParametricCurve","BezierCurve", "vec2"],
+    (function($, Line, Point, Circle, Box, Util,  KdTree_con, KdUtil, ParametricCurve, Beziercurve, vec2) {
         "use strict";
 
         /*
@@ -26,6 +26,7 @@ define(["jquery", "Line", "point","circle", "Box", "util","KdTree_con","kdutil",
 
             var kdTree;
             var pointList = [];
+            var drawList = [];
 
             // generate random X coordinate within the canvas
             var randomX = function () {
@@ -59,6 +60,64 @@ define(["jquery", "Line", "point","circle", "Box", "util","KdTree_con","kdutil",
                 // convert to hex notation
                 return "#" + toHex2(r) + toHex2(g) + toHex2(b);
             };
+
+
+            /**
+             * Zusatzaufgabe zur Aufgabe 2.2.
+             * Tangenten auf dem Kreis
+             */
+            $("#btnNewTangenten").click((function () {
+
+                var style = {
+                    width: Math.floor(Math.random()) + 1,
+                    color: randomColor()
+                };
+
+                var p1x = ($("#p1x").val()) || 170;
+                var p1y = $("#p1y").val() || 60;
+                var p2x = $("#p2x").val() || 300;
+                var p2y = $("#p2y").val() || 50;
+                var r0 = $("#r").val() || 50;
+
+               // var p3p2 = [0,0];
+               // var p4p2 = [0,0];
+
+                var p2 = new Point([p2x, p2y], style);
+                var circle = new Circle([p1x, p1y], r0, style);
+
+                var p1p2Vec = vec2.sub(p2.center, circle.center);
+                var p1p2 = vec2.length(p1p2Vec);
+                var tangent = Math.sqrt(Math.pow(p1p2, 2) - Math.pow(r0, 2));
+
+                //Kathetensatz: a^2 = p*c  ->  p = a^2/c,
+                //              b^2 = q*c  ->  q = b^2/c
+                //Höhensatz:    h^2=p*q
+                var p = Math.pow(r0, 2) / p1p2;
+                var q = Math.pow(tangent, 2) / p1p2;
+                var h = Math.sqrt(p * q);
+
+                var direction_cp = vec2.normal(p1p2Vec);
+                var point_on_cp = vec2.add(circle.center, vec2.mult(direction_cp, p));
+                var normal_to_cp = [-direction_cp[1], direction_cp[0]];
+                var p3p2 = vec2.add(point_on_cp, vec2.mult(normal_to_cp, h));
+                var p4p2 = vec2.sub(point_on_cp, vec2.mult(normal_to_cp, h));
+                
+                var p3 = new Point([p3p2[0], p3p2[1]], style);
+                var p4 = new Point([p4p2[0], p4p2[1]], style);
+                var p3_tangente = new Line([p2x, p2y], [p3.center[0], p3.center[1]], style);
+                var p4_tangente = new Line([p2x, p2y], [p4.center[0], p4.center[1]], style);
+                
+                //result uebergeben
+                $("#p3x").val(p3.center[0].toFixed(2));
+                $("#p3y").val(p3.center[1].toFixed(2));
+                $("#p4x").val(p4.center[0].toFixed(2));
+                $("#p4y").val(p4.center[1].toFixed(2));
+
+                scene.addObjects([p2, circle, p3, p4, p3_tangente, p4_tangente]);
+                sceneController.deselect();
+                sceneController.select(p2);
+            }));
+
 
             /**
              * event handler for "new line button".

@@ -122,6 +122,7 @@ define(["util", "Scene"],
         SceneController.prototype.select = function (obj) {
 
             if (!obj) {
+                //noinspection JSAnnotator
                 throw new "SceneController.select(): no object provided";
             }
 
