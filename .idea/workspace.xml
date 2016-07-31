@@ -10,6 +10,18 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/textures/satellitenbild_bm2002_nacht_stadtlichter.jpg" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/textures/satellitenbild_bm2002_tag_eis.jpg" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/textures/satellitenbild_bm2002_tag_wolken.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/CG2-A01.1-Canvas2D.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/CG2-A01.2-KdTree.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/CG2-A01.3-Curves.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/robo_plan.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/sounds/DerRoBoTer.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a00-test/nehe.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/cg2.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/models/explosion.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/models/phong.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/models/planet.js" />
@@ -24,6 +36,74 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/shaders/unicolor.vs" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/style/jquery-ui.css" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Todesstern2/lib/jquery-ui-1.11.4.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/.idea/cg-a01.1-canvas.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/controller/html_controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/controller/scene_controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/kdtree/boundingbox.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/kdtree/kdnode.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/kdtree/kdtree.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/kdtree/kdutil.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/math/vec2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/scene/bezier_curve.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/scene/box.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/scene/circle.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/scene/line.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/scene/parametric_curve.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/scene/point.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/scene/point_dragger.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/scene/scene.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/style/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a01.1-canvas/utils/util.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/controller/html_controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/models/band.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/models/parametric.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/models/random.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/models/robo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/models/shape_from_file.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/obj/loaders/MTLLoader.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/obj/loaders/OBJLoader.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/obj/obj/dromedar.obj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/scene/buffer_geometry.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/scene/buffer_geometry_normal.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/scene/scene.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/shaders.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/shaders/vertex_color.fs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/shaders/vertex_color.vs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/style/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/text.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg-a02.1-surfaces/utils/util.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a00-test/dragger.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a00-test/file.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a00-test/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a00-test/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a00-test/scene.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a00-test/straight_line.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a00-test/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a00-test/util.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a00-test/vec2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a00-test/webgl-demo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a00-warmup/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a00-warmup/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a00-warmup/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a01.2-kdtree/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a01.2-kdtree/html_controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a01.2-kdtree/kdtree/boundingbox.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a01.2-kdtree/kdtree/kdnode.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a01.2-kdtree/kdtree/kdtree.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cg2-a01.2-kdtree/kdtree/kdutil.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/gl-matrix-1.3.7.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/jquery-1.7.2.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/require.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/three.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/three.min.js" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Todesstern2/.idea/.name" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Todesstern2/.idea/cg2.iml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Todesstern2/.idea/copyright/profiles_settings.xml" afterPath="" />
@@ -32,7 +112,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/Todesstern2/.idea/misc.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Todesstern2/.idea/modules.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Todesstern2" afterPath="$PROJECT_DIR$/Todesstern2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/CG2.iml" afterPath="$PROJECT_DIR$/.idea/CG2.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/app.js" afterPath="$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/controller/html_controller.js" afterPath="$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/controller/html_controller.js" />
@@ -177,6 +257,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -195,116 +276,9 @@
               <option name="myItemId" value="CG2" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Todesstern2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CG2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CG2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Todesstern2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CG2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CG2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Todesstern2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cg-a02.1-surfaces" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CG2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CG2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Todesstern2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cg-a02.1-surfaces" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shaders" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CG2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CG2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Todesstern2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cg-a02.1-surfaces" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CG2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CG2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Todesstern2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cg-a02.1-surfaces" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -360,23 +334,24 @@
       <workItem from="1468505214741" duration="2005000" />
       <workItem from="1468701352149" duration="133000" />
       <workItem from="1469540342810" duration="43000" />
+      <workItem from="1469981271050" duration="633000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8001000" />
+    <option name="totallyTimeSpent" value="8634000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-10" y="3" width="1934" height="1027" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27223426" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27711496" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32932693" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -405,6 +380,54 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/shaders/phong_vs.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/shaders/explosion_vs.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/shaders/planet_vs.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/shaders/phong_fs.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/shaders/explosion_fs.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/shaders/planet_fs.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2046">
+          <caret line="93" column="52" selection-start-line="92" selection-start-column="4" selection-end-line="93" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Todesstern2/cg-a02.1-surfaces/shaders/phong_vs.glsl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">

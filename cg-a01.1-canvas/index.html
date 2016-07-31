@@ -1,0 +1,138 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    
+    <!--
+     *
+     * JavaScript / Canvas teaching framwork 
+     * (C)opyright Hartmut Schirmacher, hschirmacher@beuth-hochschule.de
+     * changes by Kristian Hildebrand, khildebrand@beuth-hochschule.de
+    -->
+
+    <title>CG2 A1: Points, Lines, Curves &amp; Canvas</title>
+    
+    <!-- import main module using RequireJS -->
+    <script data-main="app.js" src="../lib/require.js"></script>
+    
+    <!-- import style sheet -->
+    <link rel="stylesheet" type="text/css" media="screen" href="style/style.css">
+    
+</head>
+
+<body>
+
+  <!-- this element will be used to diplay errors -->
+  <pre id="error"></pre>
+  
+  <!-- centered region with drawing canvas and parameter area -->
+  <div align="center">
+
+      <canvas id="drawing_area" width="500" height="400" style="position:relative;">
+          <!-- NOTE: the "position:relative" is required due to the current
+               implementation of mouse coordinate processing in module "util". -->
+          If you see this text, your browser probably does not
+          support the HTML5 canvas 2D drawing context.
+      </canvas>
+
+
+
+
+      <div id="param_area" class="boxes" >
+
+        <h3>Create Objects:</h3>
+
+        <button id="btnNewLine"   type="button"   >Line </button>
+        <button id="btnNewCircle"   type="button"   >Circle</button><br>
+        <button id="btnNewPoint"   type="button"   >Point </button>
+        <button id="btnNewBox"   type="button"   >Box </button> <br>
+        <button id="newParametricCurve" type="button">Parametric Curve</button>
+        <button id="newBezierCurve" type="button">Bezier Curve</button><br>
+        <!-- add more here... -->
+
+        <h3>Selected Element:</h3>
+        <label for="inColor">Color:</label>
+        <input id="inColor" name="inColor" type="color"><br>
+        <label for="inNumber">Width:</label>
+        <input id="inNumber" name="inNumber" type="number"><br>
+        <label id="ra" for="inRadius">Radius:</label>
+        <input id="inRadius" name="inRadius" type="number"><br>
+
+        <h4>kd-Tree:</h4>
+        <button id="btnNewPointList" type="button">New PointList</button>
+        <input id="inPoints" name="inPoints" type="number"><br>
+        <button id="btnBuildKdTree" type="button">Build KdTree</button>
+        <button id="btnQueryKdTree" type="button">Query KdTree</button><br><br>
+        <input id="visKdTree" name="checkBox" type="checkbox">
+        <label for="visKdTree">show kd-Tree</label>
+      </div>
+
+      <div id="param_area2" class="boxes">
+
+              <h3>General curve options:</h3>
+              <label for="inputSegments">segments:</label>
+              <input id="inputSegments" name="inputSegments" type="number" value="20"><br>
+              <label for="visTickMarks">Tick marks:</label>
+              <input type="checkbox" id="visTickMarks">
+
+              <h3>Parametric curve options:</h3>
+              <label for="inputFt">f(t):</label>
+              <input id="inputFt" name="inputXt" type="text" value="200+100*Math.sin(t)"><br>
+              <label for="inputGt">g(t):</label>
+              <input id="inputGt" name="inputYt" type="text" value="200+100*Math.cos(t)"><br>
+              <label for="inputMint">min t:</label>
+              <input id="inputMint" name="inputMint" type="number" value="0"><br>
+              <label for="inputMaxt">max t:</label>
+              <input id="inputMaxt" name="inputMaxt" type="number" value="6.28"><br>
+    </div>
+      <div id="param_area3" class="boxes">
+          <table id="tangent">
+              <a>Tangenten auf dem Kreis berechnen.</a><br><br>
+              <tr>
+                  <td>Punkt1 x:</td>
+                  <td><input id="p1x" class="objParam" type="number" placeholder="punkt1 x"></td>
+              </tr>
+              <tr>
+                  <td>Punkt1 y:</td>
+                  <td><input id="p1y" class="objParam" type="number" placeholder="punkt1 y"></td>
+              </tr>
+              <tr>
+                  <td>Punkt2 x:</td>
+                  <td><input id="p2x" class="objParam" type="number" placeholder="punkt2 x"></td>
+              </tr>
+              <tr>
+                  <td>Punkt2 y:</td>
+                  <td><input id="p2y" class="objParam" type="number" placeholder="punkt2 y"></td>
+              </tr>
+              <tr>
+                  <td>Radius:</td>
+                  <td><input id="r" class="objParam" type="number" placeholder="radius"></td>
+              </tr>
+              <tr>
+                  <td><button id="btnNewTangenten" type="button">Tangenten berechnen</button></td>
+              </tr>
+
+          </table>
+
+          <table id="tangentResult">
+              <tr>
+                  <td>Punkt3 x:</td>
+                  <td><output id="p3x" type="number" ></output></td>
+                  <td>Punkt3 y:</td>
+                  <td><output id="p3y" type="number" ></output></td>
+              </tr>
+              <tr>
+                  <td>Punkt4 x:</td>
+                  <td><output id="p4x" type="number" ></output></td>
+                  <td>Punkt4 y:</td>
+                  <td><output id="p4y" type="number" ></output></td>
+              </tr>
+          </table>
+      </div>
+
+    <div style="float:clear;">
+    </div>
+    
+  </div>
+  
+</body>
+</html>

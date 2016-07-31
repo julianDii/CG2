@@ -1,0 +1,205 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <!--
+     *
+     * JavaScript / WebGL teaching framwork
+     * (C)opyright Kristian Hildebrand, khildebrand@beuth-hochschule.de
+    -->
+
+    <title>CG2 A2: WebGL / Surfaces</title>
+
+    <!-- import main module using RequireJS -->
+    <script data-main="app.js" src="../lib/require.js"></script>
+
+    <!-- import style sheet -->
+    <link rel="stylesheet" type="text/css" media="screen" href="style/style.css">
+
+</head>
+
+<body>
+
+  <!-- this element will be used to diplay errors -->
+  <pre id="error"></pre>
+
+  <!-- centered region with drawing canvas and parameter area -->
+  <div align="center">
+
+      <div id="drawing_container" width="600" height="400"></div>
+
+    <div id="param_area" >
+
+        <button id="btnRandom"   type="button"   >Random</button>
+        <button id="btnBand" type="button"   >Band</button>
+        <button id="btnParametric" type="button"   >Parametric</button>
+        <button id="sphere" type="button">Sphere</button>
+        <button id="cube" type="button">Cube</button>
+        <button id="knot" type="button">Knot</button>
+        <button id="obj" type="button">Obj</button>
+        <button id="robo" type="button">Create Robot</button>
+        <button id="btnTangentenPoints" type="button">Tangenten</button>
+
+        <!-- add more here... -->
+        <h3>Selected Object:</h3>
+
+        <table id="tangent">
+            <tr>
+                <td>Punkt1 x:</td>
+                <td><input id="p1x" class="objParam" type="number" placeholder="punkt1 x"></td>
+            </tr>
+            <tr>
+                <td>Punkt1 y:</td>
+                <td><input id="p1y" class="objParam" type="number" placeholder="punkt1 y"></td>
+            </tr>
+            <tr>
+                <td>Punkt2 x:</td>
+                <td><input id="p2x" class="objParam" type="number" placeholder="punkt2 x"></td>
+            </tr>
+            <tr>
+                <td>Punkt2 y:</td>
+                <td><input id="p2y" class="objParam" type="number" placeholder="punkt2 y"></td>
+            </tr>
+            <tr>
+                <td>Radius:</td>
+                <td><input id="r" class="objParam" type="number" placeholder="radius"></td>
+            </tr>
+            <tr>
+                <td><button id="btnNewTangenten" type="button">Tangenten berechnen</button></td>
+            </tr>
+
+        </table>
+
+        <table id="tangentResult">
+            <tr>
+                <td>Punkt3 x:</td>
+                <td><output id="p3x" type="number" ></output></td>
+                <td>Punkt3 y:</td>
+                <td><output id="p3y" type="number" ></output></td>
+            </tr>
+            <tr>
+                <td>Punkt4 x:</td>
+                <td><output id="p4x" type="number" ></output></td>
+                <td>Punkt4 y:</td>
+                <td><output id="p4y" type="number" ></output></td>
+            </tr>
+        </table>
+
+
+
+        <table id="table_loaders">
+            <tr>
+                <td>
+                    <button id="btnLoadObj" type="button">Load OBJ</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Obj file List</td>
+                <td>
+                    <select id="obj_select">
+                        <option>dromedar</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <table id="random">
+            <tr>
+                <td>Number of Items:</td>
+                <td><input id="numItems" class="objParam" type="number" min="1" max="10000" value="1000">
+            </tr>
+            <tr>
+                <td><button id="btnNewRandom"   type="button"   >Create Random</button></td>
+            </tr>
+        </table>
+        <table id="band">
+            <tr>
+                <td>Number of Segments:</td>
+                <td><input id="numSegments" class="objParam" type="number" min="1" max="10000" value="1000">
+            </tr>
+            <tr>
+                <td>Radius:</td>
+                <td><input id="radius" class="objParam" type="number" min="1" max="1000" value="300">
+            </tr>
+            <tr>
+                <td>Height:</td>
+                <td><input id="height" class="objParam" type="number" min="1" max="1000" value="100">
+            </tr>
+            <tr>
+                <td><button id="btnNewBand" type="button" >Create Band</button></td>
+            </tr>
+        </table>
+
+        <table id="parametric">
+
+            <div style="font-size: 12px">
+                <label id="ani">Animation</label>
+                <input id="cAnimate" class="att" type="checkbox">
+                <label id="mus">Music</label>
+                <input id="music" class="att" type="checkbox">
+                <label id="wir">Wireframe</label>
+                <input id="cWireframe" class="att" type="checkbox">
+                <label id="poi">Points</label>
+                <input id="cPoints" class="att" type="checkbox" class="att">
+                <label id="mes">Mesh</label>
+                <input id="cMesh" class="att" type="checkbox">
+
+            <tr>
+                <td>
+                    <button id="btnSphere" type="button">Sphere</button>
+                    <button id="btnTorus" type="button">Torus</button>
+                    <button id="btnPillow" type="button">Pillow</button>
+                    <button id="btnCube" type="button">Cube</button>
+                    <button id="btnspirale" type="button">Spirale</button>
+                    <button id="btnmobi" type="button">Mobi</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Function x-Direction:</td>
+                <td><input id="xDim" class="funct" type="text">
+            </tr>
+            <tr>
+                <td>Function y-Direction:</td>
+                <td><input id="yDim" class="funct" type="text">
+            </tr>
+            <tr>
+                <td>Function z-Direction:</td>
+                <td><input id="zDim" class="funct" type="text">
+            </tr>
+            <tr>
+                <td>Number of Segments u-Direction:</td>
+                <td><input id="uSegments" class="objParam" type="number" min="1" max="10000">
+            </tr>
+            <tr>
+                <td>Number of Segments v-Direction:</td>
+                <td><input id="vSegments" class="objParam" type="number" min="1" max="10000">
+            </tr>
+            <tr>
+                <td>uMin</td>
+                <td><input id="uMin" class="objParam" type="number">
+            </tr>
+            <tr>
+                <td>uMax</td>
+                <td><input id="uMax" class="objParam" type="number">
+            </tr>
+            <tr>
+                <td>vMin</td>
+                <td><input id="vMin" class="objParam" type="number">
+            </tr>
+            <tr>
+                <td>vMax</td>
+                <td><input id="vMax" class="objParam" type="number">
+            </tr>
+            <tr>
+                <td><button id="btnNewParametric" type="button">Create Parametric surface</button></td>
+                <td></td>
+            </tr>
+                </div>
+        </table>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
